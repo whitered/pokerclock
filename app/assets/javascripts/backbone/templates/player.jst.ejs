@@ -1,0 +1,11 @@
+<td><%= place %></td>
+<td><%= name %><% if(place == null){ %> <a href="#" class="hidden sitout"><%= I18n.t('clocks.players.sitout') %></a><% } %></td>
+<td>1</td>
+<td><%= rebuys %> <a href="#" class="hidden rebuy">+1</a></td>
+<% if(addon) { %>
+  <td>1</td>
+<% } else { %>
+  <td>0 <a href="#" class="hidden addon">+1</a></td>
+<% } %>
+<td><%= I18n.toCurrency(charge) %></td>
+<td><%= place ? I18n.toCurrency(win) : '' %></td>
