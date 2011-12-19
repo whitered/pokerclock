@@ -1,0 +1,49 @@
+# encoding: utf-8
+ru:
+  clocks:
+    undo: отменить
+    action:
+      new_player: 'Новый игрок: %{name}'
+      sitout: '%{player} вылетел'
+      rebuy: 'Ребай: %{player}'
+      addon: 'Аддон: %{player}'
+    timer:
+      click_to_toggle: Кликните, чтобы запустить или остановить таймер
+      game_time: Время игры
+      level_duration: Продолжительность раунда
+    info:
+      buyin: Байин
+      rebuy: Ребай
+      addon: Аддон
+      average: Средний стек
+      total: Всего фишек
+      bank: Банк
+    levels:
+      add: добавить
+      blinds_hint: Двойной клик для редактирования
+      remove: убрать
+      apply: начать
+    players:
+      sitout: вылетел
+      headers:
+        place: место
+        name: имя
+        buyin: байин
+        rebuy: ребай
+        addon: аддон
+        charge: внесено
+        win: выигрыш
+      add:
+        placeholder: Новый игрок
+        hint: Введите имя и нажмите <Ввод>
+    payouts:
+      remove: Удалить
+      add:
+        placeholder: Добавить призовое место
+        hint: Введите величину выигрыша и нажмите <Ввод>. Используйте символ "%" для указания процентов
+    footer:
+      reset:
+        name: Сбросить
+        confirm: Действительно сбросить
+        cancel: не надо
+        separator: ' или '

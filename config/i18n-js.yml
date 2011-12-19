@@ -1,0 +1,10 @@
+# Find more details about this configuration file at http://github.com/fnando/i18n-js
+translations:
+  - file: "app/assets/javascripts/locales/en.js"
+    only:
+      - "en.date.formats"
+      - "en.clocks"
+  - file: "app/assets/javascripts/locales/ru.js"
+    only: 
+      - "ru.date.formats"
+      - "ru.clocks"
