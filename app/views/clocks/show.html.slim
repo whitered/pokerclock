@@ -4,6 +4,7 @@ html
     title PokerClock
     = stylesheet_link_tag 'clock'
     = csrf_meta_tags
+    = analytics_init if Rails.env.production? && GoogleAnalytics.valid_tracker?
   body lang=I18n.locale.to_s class=controller.controller_name 
     #undo
     #levels

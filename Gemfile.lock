@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/bgarret/google-analytics-rails.git
+  revision: 034746ba0a9807c2e6453475ca61f832462ea571
+  specs:
+    google-analytics-rails (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -141,6 +147,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.1)
+  google-analytics-rails!
   i18n-js
   jquery-rails
   pg
