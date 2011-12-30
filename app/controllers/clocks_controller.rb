@@ -8,7 +8,7 @@ class ClocksController < ApplicationController
 private
 
   def set_locale
-    I18n.locale = params[:locale] || :en
+    I18n.locale = params[:lang] || :en
   end
 
 end
