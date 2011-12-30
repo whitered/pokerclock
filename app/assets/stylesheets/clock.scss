@@ -32,17 +32,11 @@ body.clocks {
   }
 
   #undo { 
-    display: none;
-    position: absolute; 
-    width: 100%;
-    background: #ccc;
-    text-align: center;
-
-    .message {
-    }
-
+    position: absolute;
     .undo {
       float: right;
+      color: white;
+      margin-right: 1em;
     }
   }
 

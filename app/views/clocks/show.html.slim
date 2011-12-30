@@ -6,7 +6,7 @@ html
     = csrf_meta_tags
     = analytics_init if Rails.env.production? && GoogleAnalytics.valid_tracker?
   body lang=I18n.locale.to_s class=controller.controller_name 
-    #undo
+    #undo.row
     #levels
       ul
       = link_to t('clocks.levels.add'), nil, :class => 'add'
