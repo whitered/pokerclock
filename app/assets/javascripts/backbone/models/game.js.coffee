@@ -91,9 +91,9 @@ class Clock.Models.Game extends Backbone.Model
 
   reset: =>
     this.set(this.defaults)
-    _.invoke(this.players.toArray(), 'destroy')
-    _.invoke(this.levels.toArray(), 'destroy')
-    _.invoke(this.payouts.toArray(), 'destroy')
+    this.players.at(0).destroy() while this.players.length > 0
+    this.levels.at(0).destroy() while this.levels.length > 0
+    this.payouts.at(0).destroy() while this.payouts.length > 0
     this.levels.addNextLevel()
     this.payouts.add { rate: 100, percentage: true }
 
