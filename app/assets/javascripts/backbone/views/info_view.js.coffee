@@ -3,6 +3,8 @@ class Clock.Views.InfoView extends Backbone.View
 
   template: JST['backbone/templates/info']
 
+  chipsTemplate: JST['backbone/templates/chips']
+
   initialize: =>
     game = this.model
     players = game.players
@@ -17,14 +19,14 @@ class Clock.Views.InfoView extends Backbone.View
         formatOutput: (value) -> I18n.toCurrency(value)
       })
     )
-    _.each('buyin_chips rebuy_chips addon_chips'.split(' '), (property) ->
+    _.each('buyin_chips rebuy_chips addon_chips'.split(' '), (property) =>
       new Clock.Views.EditablePropertyView({
         el: this.$('#' + property)
         model: game
         property: property
         adjustInputWidth: true
         inputAttributes: { type: 'number', min: 0 }
-        formatOutput: (value) -> "<span class='chips'>#{value}</span>"
+        formatOutput: (value) => this.chipsTemplate({ value: value })
       })
     )
     game.bind('change:buyin_chips', this.render)
@@ -40,7 +42,7 @@ class Clock.Views.InfoView extends Backbone.View
     totalChips = this.model.totalChips()
     totalCharge = this.model.totalCharge()
     averageChips = if playersLeft > 0 then Math.round(totalChips * 100 / playersLeft) / 100 else '-'
-    this.$('#average_chips').html("<span class='chips'>#{averageChips}</span>")
-    this.$('#total_chips').html("<span class='chips'>#{totalChips}</span>")
+    this.$('#average_chips').html(this.chipsTemplate({ value: averageChips }))
+    this.$('#total_chips').html(this.chipsTemplate({ value: totalChips }))
     this.$('#bank').text(I18n.toCurrency(totalCharge))
     return this

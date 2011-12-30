@@ -22,9 +22,6 @@ body.clocks {
   .hover .hoverable { visibility: visible; }
   .editing .hoverable { visibility: hidden; }
 
-  .chips::after { content: "⛁"; }
-
-
   .editable {
     input { display: none; }
   }
