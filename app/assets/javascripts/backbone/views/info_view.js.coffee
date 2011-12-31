@@ -39,10 +39,14 @@ class Clock.Views.InfoView extends Backbone.View
 
   render: =>
     playersLeft = this.model.activePlayers().length
-    totalChips = this.model.totalChips()
+    totalChips = this.chipsTemplate({ value: this.model.totalChips() })
     totalCharge = this.model.totalCharge()
-    averageChips = if playersLeft > 0 then Math.round(totalChips * 100 / playersLeft) / 100 else '-'
-    this.$('#average_chips').html(this.chipsTemplate({ value: averageChips }))
-    this.$('#total_chips').html(this.chipsTemplate({ value: totalChips }))
+    averageChips = if playersLeft > 0
+                     value = Math.round(totalChips * 100 / playersLeft) / 100
+                     this.chipsTemplate({ value: value })
+                   else
+                     '?'
+    this.$('#average_chips').html(averageChips)
+    this.$('#total_chips').html(totalChips)
     this.$('#bank').text(I18n.toCurrency(totalCharge))
     return this
