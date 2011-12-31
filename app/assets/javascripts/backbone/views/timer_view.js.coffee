@@ -24,7 +24,7 @@ class Clock.Views.TimerView extends Backbone.View
   events:
     'click #round_time_left': 'toggleTimer'
 
-  alarm: new Audio('/audio/fnrlbell.wav')
+  alarm: new Audio('/audio/bell.wav')
 
   syncTimer: (game, timer) =>
     this.el.stopTime('timer')
