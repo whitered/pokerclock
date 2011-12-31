@@ -6,34 +6,31 @@ html
     = csrf_meta_tags
     = analytics_init if Rails.env.production? && GoogleAnalytics.valid_tracker?
   body lang=I18n.locale.to_s class=controller.controller_name 
-    #undo.row
-    #levels
-      ul
-      = link_to t('clocks.levels.add'), nil, :class => 'add'
-    #info
-    #payouts
-      ol
-      = text_field_tag :new_payout, nil, :placeholder => t('clocks.payouts.add.placeholder'), :class => 'add', :title => t('clocks.payouts.add.hint')
-    #timer
-    #players
-      table
-        tr
-          th = t('clocks.players.headers.place')
-          th = t('clocks.players.headers.name')
-          th = t('clocks.players.headers.buyin')
-          th = t('clocks.players.headers.rebuy')
-          th = t('clocks.players.headers.addon')
-          th = t('clocks.players.headers.charge')
-          th = t('clocks.players.headers.win')
-        /*- @game.participations.each do |p|*/
-          /*tr class='participation' id="participation_#{p.id}"*/
-            /*td = p.dummy_name || render(p.user)*/
-            /*td*/
-            /*td data-rebuys=p.rebuys*/
-            /*td data-addon=(p.addon ? '1' : '0')*/
-            /*td = link_to t('clocks.show.sitout')*/
-      = text_field_tag :new_player_name, nil, :placeholder => t('clocks.players.add.placeholder'), :class => 'add', :title => t('clocks.players.add.hint')
-    #footer
+    .container
+      #undo.row
+      #firstrow.row
+        #timer.span6
+        #levels.span6
+          ul
+          = link_to t('clocks.levels.add'), nil, :class => 'add'
+      .row
+        .span3
+          #info
+          #payouts
+            ol
+            = text_field_tag :new_payout, nil, :placeholder => t('clocks.payouts.add.placeholder'), :class => 'add', :title => t('clocks.payouts.add.hint')
+        #players.span9
+          table
+            tr
+              th = t('clocks.players.headers.place')
+              th = t('clocks.players.headers.name')
+              th = t('clocks.players.headers.buyin')
+              th = t('clocks.players.headers.rebuy')
+              th = t('clocks.players.headers.addon')
+              th = t('clocks.players.headers.charge')
+              th = t('clocks.players.headers.win')
+          = text_field_tag :new_player_name, nil, :placeholder => t('clocks.players.add.placeholder'), :class => 'add', :title => t('clocks.players.add.hint')
+    footer
       = link_to t('clocks.footer.reset.name'), '#', :class => 'reset'
     / Javascript at the bottom for fast page loading
     javascript:

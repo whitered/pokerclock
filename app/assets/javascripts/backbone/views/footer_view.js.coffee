@@ -1,5 +1,5 @@
 class Clock.Views.FooterView extends Backbone.View
-  el: $('#footer')
+  el: $('footer')
 
   initialize: =>
     this.$('a.reset').inlineConfirmation(

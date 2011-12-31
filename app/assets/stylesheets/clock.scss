@@ -1,22 +1,18 @@
 /*
- *= require 'twitter/bootstrap'
+ *= require 'bootstrap'
  */
-
-@mixin left {
-}
-
-@mixin right {
-  float: right;
-  clear: right;
-}
-
-@mixin block {
-  margin-bottom: 3em;
-}
 
 body.clocks {
 
-  color: #666;
+  //[class*="span"] {
+    //background: lightgray;
+  //}
+
+  #firstrow {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
 
   .hoverable { visibility: hidden; }
   .hover .hoverable { visibility: visible; }
@@ -42,16 +38,10 @@ body.clocks {
 
   #timer {
 
-    @include left;
-    @include block;
-
     text-align: right;
-    width: 50%;
-
-    time { display: block; }
 
     #round_time_left { 
-      font-size: 10em;
+      font-size: 12em;
       line-height: 1;
       cursor: pointer;
     }
@@ -66,29 +56,12 @@ body.clocks {
   }
 
   #info {
-
-    @include right;
-    @include block;
-
   }
 
   #players {
-
-    @include left;
-    @include block;
-
-    th { padding: 0 0.5em; }
-
-    .hidden { visibility: hidden; }
-
-    .hover .hidden { visibility: visible; }
-
   }
 
   #levels {
-
-    @include right;
-    @include block;
 
     text-align: right;
 
@@ -123,9 +96,6 @@ body.clocks {
 
   #payouts {
 
-    @include right;
-    @include block;
-
     ol {
       list-style: upper-roman inside;
     }
@@ -137,9 +107,7 @@ body.clocks {
     }
   }
 
-  #footer {
-    clear: both;
-    width: 100%;
+  footer {
     text-align: center;
     font-size: 0.7em;
   }
