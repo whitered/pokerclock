@@ -47,3 +47,5 @@ en:
         confirm: Really reset
         cancel: cancel
         separator: ' or '
+    editable_property:
+      change: Change

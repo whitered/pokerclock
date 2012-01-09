@@ -47,3 +47,5 @@ ru:
         confirm: Действительно сбросить
         cancel: не надо
         separator: ' или '
+    editable_property:
+      change: Изменить

@@ -19,7 +19,7 @@ class Clock.Views.EditablePropertyView extends Backbone.View
     'keypress input' : 'updateOnEnter'
     'mouseover': 'handleMouseOver'
     'mouseout': 'handleMouseOut'
-    'click a.hoverable': 'edit'
+    'click a.change': 'edit'
 
   handleMouseOver: =>
     this.el.addClass('hover')
@@ -38,6 +38,7 @@ class Clock.Views.EditablePropertyView extends Backbone.View
 
 
   update: =>
+    this.handleMouseOut()
     this.el.removeClass('editing')
     value = this.processInput(this.$('input').val())
     values = {}
