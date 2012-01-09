@@ -17,8 +17,18 @@ class Clock.Views.EditablePropertyView extends Backbone.View
     'dblclick' : 'edit'
     'blur input' : 'update'
     'keypress input' : 'updateOnEnter'
+    'mouseover': 'handleMouseOver'
+    'mouseout': 'handleMouseOut'
+    'click a.hoverable': 'edit'
+
+  handleMouseOver: =>
+    this.el.addClass('hover')
+
+  handleMouseOut: =>
+    this.el.removeClass('hover')
 
   edit: =>
+    this.handleMouseOut()
     input = this.$('input')
     if this.options.adjustInputWidth?
       width = this.$('.display').innerWidth()
