@@ -4,6 +4,9 @@
 
 $hovered: #FFC;
 $runningTimer: #363;
+$actionsBackground: white;
+$actionsBorder: lightgray;
+$actionsShadow: #999;
 
 body.clocks {
 
@@ -43,11 +46,15 @@ body.clocks {
   }
 
   ul.actions, a.action {
+    text-align: left;
     margin: 0;
     display: inline-block;
     padding: 0 0.5em;
     position: absolute;
     border-radius: 2px;
+    background: $actionsBackground;
+    border: 1px solid $actionsBorder;
+    box-shadow: 1px 1px 2px $actionsShadow;
   }
 
   #undo { 
