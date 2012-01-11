@@ -11,7 +11,6 @@ class Clock.Views.EditablePropertyView extends Backbone.View
     this.formatOutput = this.options.formatOutput or doNotChange
     this.processInput = this.options.processInput or doNotChange
     this.el.addClass('editable')
-    this.el.addClass('hoverable')
     this.render()
 
   events:
@@ -46,7 +45,7 @@ class Clock.Views.EditablePropertyView extends Backbone.View
       html += ' ' + key + '="' + value + '"'
     )
     html += ' value="' + this.formatInput(value) + '"/>'
-    return html
+    html
 
   render: =>
     value = this.model.get(this.options.property)
@@ -54,4 +53,4 @@ class Clock.Views.EditablePropertyView extends Backbone.View
       value: this.formatOutput(value)
       input: this.buildInput(value)
     }))
-    return this
+    this

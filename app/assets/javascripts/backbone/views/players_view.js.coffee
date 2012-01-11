@@ -1,6 +1,6 @@
 class Clock.Views.PlayerView extends Backbone.View
   tagName: 'tr'
-  className: 'hoverable'
+  className: 'hoverable hoverhighlight'
 
   template: JST['backbone/templates/player']
 

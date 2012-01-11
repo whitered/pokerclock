@@ -1,6 +1,5 @@
 class Clock.Views.LevelView extends Backbone.View
   tagName: 'li'
-  className: 'hoverable'
 
   template: JST["backbone/templates/level"]
 
