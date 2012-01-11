@@ -1,5 +1,8 @@
-<span class="display hoverable hoverhighlight" title="<%= formula %>">
-  <%= value %>
-  <a href="#" class="action hovervisible remove"><%= I18n.t('clocks.payouts.remove') %></a>
+<span class="display hoverable" title="<%= formula %>">
+  <span class="hoverhighlight"><%= value %></span>
+  <ul class="hovervisible actions">
+    <li><a href="#" class="change"><%= I18n.t('clocks.payouts.change') %></a></li>
+    <li><a href="#" class="remove"><%= I18n.t('clocks.payouts.remove') %></a></li>
+  </ul>
 </span>
 <input type="text" value="<%= formula %>" />

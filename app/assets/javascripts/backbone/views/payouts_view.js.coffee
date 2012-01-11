@@ -8,6 +8,7 @@ class Clock.Views.PayoutView extends Backbone.View
     'dblclick' : 'edit'
     'keypress' : 'updateOnEnter'
     'click a.remove' : 'destroy'
+    'click a.change' : 'edit'
 
   initialize: =>
     this.model.bind('change', this.render)

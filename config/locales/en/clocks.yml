@@ -39,6 +39,7 @@ en:
         hint: Type the name and press <Enter>
     payouts:
       remove: remove
+      change: change
       add:
         placeholder: Add payout place
         hint: Enter the payout value and press <Enter>. Use "%" symbol to specify percentage
