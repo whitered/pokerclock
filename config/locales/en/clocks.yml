@@ -41,7 +41,7 @@ en:
       remove: remove
       add:
         placeholder: Add payout place
-        hint: Enter the payout money and press <Enter>. Use "%" symbol to specify percentage
+        hint: Enter the payout value and press <Enter>. Use "%" symbol to specify percentage
     footer:
       reset:
         name: Reset
