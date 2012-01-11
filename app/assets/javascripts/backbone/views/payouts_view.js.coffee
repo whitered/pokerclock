@@ -1,5 +1,6 @@
 class Clock.Views.PayoutView extends Backbone.View
   tagName: 'li'
+  className: 'hoverable'
 
   template: JST['backbone/templates/payout']
 
@@ -7,18 +8,10 @@ class Clock.Views.PayoutView extends Backbone.View
     'blur input' : 'display'
     'dblclick' : 'edit'
     'keypress' : 'updateOnEnter'
-    'mouseover' : 'handleMouseOver'
-    'mouseout' : 'handleMouseOut'
     'click a.remove' : 'destroy'
 
   initialize: =>
     this.model.bind('change', this.render)
-
-  handleMouseOver: =>
-    $(this.el).addClass('hover')
-
-  handleMouseOut: =>
-    $(this.el).removeClass('hover')
 
   display: =>
     $(this.el).removeClass('editing')

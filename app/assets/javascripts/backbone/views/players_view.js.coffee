@@ -1,5 +1,6 @@
 class Clock.Views.PlayerView extends Backbone.View
   tagName: 'tr'
+  className: 'hoverable'
 
   template: JST['backbone/templates/player']
 
@@ -7,17 +8,9 @@ class Clock.Views.PlayerView extends Backbone.View
     this.model.bind('change', this.render)
 
   events:
-    'mouseover' : 'handleMouseover'
-    'mouseout' : 'handleMouseout'
     'click a.rebuy' : 'handleRebuy'
     'click a.addon' : 'handleAddon'
     'click a.sitout' : 'handleSitout'
-
-  handleMouseover: =>
-    $(this.el).addClass('hover')
-
-  handleMouseout: =>
-    $(this.el).removeClass('hover')
 
   handleRebuy: =>
     num = this.model.get('rebuys')

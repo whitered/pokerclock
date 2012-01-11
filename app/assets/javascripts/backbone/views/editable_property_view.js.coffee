@@ -11,24 +11,16 @@ class Clock.Views.EditablePropertyView extends Backbone.View
     this.formatOutput = this.options.formatOutput or doNotChange
     this.processInput = this.options.processInput or doNotChange
     this.el.addClass('editable')
+    this.el.addClass('hoverable')
     this.render()
 
   events:
     'dblclick' : 'edit'
     'blur input' : 'update'
     'keypress input' : 'updateOnEnter'
-    'mouseover': 'handleMouseOver'
-    'mouseout': 'handleMouseOut'
     'click a.change': 'edit'
 
-  handleMouseOver: =>
-    this.el.addClass('hover')
-
-  handleMouseOut: =>
-    this.el.removeClass('hover')
-
   edit: =>
-    this.handleMouseOut()
     input = this.$('input')
     if this.options.adjustInputWidth?
       width = this.$('.display').innerWidth()
@@ -38,7 +30,6 @@ class Clock.Views.EditablePropertyView extends Backbone.View
 
 
   update: =>
-    this.handleMouseOut()
     this.el.removeClass('editing')
     value = this.processInput(this.$('input').val())
     values = {}

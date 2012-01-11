@@ -14,9 +14,9 @@ body.clocks {
   }
 
 
-  .hoverable { visibility: hidden; }
-  .hover .hoverable { visibility: visible; }
-  .editing .hoverable { visibility: hidden; }
+  .hoverable .hovervisible { visibility: hidden; }
+  .hoverable:hover .hovervisible { visibility: visible; }
+  .editing .hovervisible { visibility: hidden; }
 
   .editable {
     input { display: none; }
