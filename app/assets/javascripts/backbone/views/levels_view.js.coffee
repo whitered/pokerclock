@@ -26,6 +26,7 @@ class Clock.Views.LevelView extends Backbone.View
     'keypress .edit input': 'updateOnEnter'
     'click a.remove' : 'handleRemove'
     'click a.apply' : 'handleApply'
+    'click a.change' : 'edit'
 
   handleRemove: =>
     this.model.destroy()

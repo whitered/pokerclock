@@ -23,6 +23,7 @@ en:
       blinds_hint: Doubleclick to edit
       remove: remove
       apply: start
+      change: change
     players:
       sitout: sit out
       headers:
@@ -48,4 +49,4 @@ en:
         cancel: cancel
         separator: ' or '
     editable_property:
-      change: Change
+      change: change

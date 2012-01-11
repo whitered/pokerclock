@@ -42,7 +42,7 @@ body.clocks {
     color: darkblue;
   }
 
-  ul.actions, a.change {
+  ul.actions, a.action {
     margin: 0;
     display: inline-block;
     padding: 0 0.5em;
@@ -88,11 +88,20 @@ body.clocks {
 
     text-align: right;
 
-    ul {
+    >ul {
       list-style: none;
 
-      li {
+      >li {
         line-height: 1.2;
+
+        ul.hovervisible {
+          list-style: none;
+          position: absolute;
+          display: inline-block;
+
+          li {
+          }
+        }
       }
 
       li.current {
@@ -117,11 +126,6 @@ body.clocks {
 
     .editing .edit {
       display: inline;
-    }
-
-    ul.hovervisible {
-      position: absolute;
-      display: inline-block;
     }
   }
 
