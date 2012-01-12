@@ -11,7 +11,6 @@ class Clock.Views.LevelView extends Backbone.View
 
   handleChange: =>
     this.render()
-    this.handleMouseout()
     this.highlight()
 
   handleDestroy: =>
