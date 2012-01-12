@@ -23,6 +23,7 @@ en:
       blinds_hint: Doubleclick to edit
       remove: remove
       apply: start
+      change: change
     players:
       sitout: sit out
       headers:
@@ -38,9 +39,10 @@ en:
         hint: Type the name and press <Enter>
     payouts:
       remove: remove
+      change: change
       add:
         placeholder: Add payout place
-        hint: Enter the payout money and press <Enter>. Use "%" symbol to specify percentage
+        hint: Enter the payout value and press <Enter>. Use "%" symbol to specify percentage
     footer:
       reset:
         name: Reset
@@ -48,4 +50,4 @@ en:
         cancel: cancel
         separator: ' or '
     editable_property:
-      change: Change
+      change: change

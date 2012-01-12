@@ -23,6 +23,7 @@ ru:
       blinds_hint: Двойной клик для редактирования
       remove: убрать
       apply: начать
+      change: изменить
     players:
       sitout: вылетел
       headers:
@@ -37,7 +38,8 @@ ru:
         placeholder: Новый игрок
         hint: Введите имя и нажмите <Ввод>
     payouts:
-      remove: Удалить
+      remove: удалить
+      change: изменить
       add:
         placeholder: Добавить призовое место
         hint: Введите величину выигрыша и нажмите <Ввод>. Используйте символ "%" для указания процентов
@@ -48,4 +50,4 @@ ru:
         cancel: не надо
         separator: ' или '
     editable_property:
-      change: Изменить
+      change: изменить

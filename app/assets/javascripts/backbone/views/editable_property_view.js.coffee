@@ -17,18 +17,9 @@ class Clock.Views.EditablePropertyView extends Backbone.View
     'dblclick' : 'edit'
     'blur input' : 'update'
     'keypress input' : 'updateOnEnter'
-    'mouseover': 'handleMouseOver'
-    'mouseout': 'handleMouseOut'
     'click a.change': 'edit'
 
-  handleMouseOver: =>
-    this.el.addClass('hover')
-
-  handleMouseOut: =>
-    this.el.removeClass('hover')
-
   edit: =>
-    this.handleMouseOut()
     input = this.$('input')
     if this.options.adjustInputWidth?
       width = this.$('.display').innerWidth()
@@ -38,7 +29,6 @@ class Clock.Views.EditablePropertyView extends Backbone.View
 
 
   update: =>
-    this.handleMouseOut()
     this.el.removeClass('editing')
     value = this.processInput(this.$('input').val())
     values = {}
@@ -55,7 +45,7 @@ class Clock.Views.EditablePropertyView extends Backbone.View
       html += ' ' + key + '="' + value + '"'
     )
     html += ' value="' + this.formatInput(value) + '"/>'
-    return html
+    html
 
   render: =>
     value = this.model.get(this.options.property)
@@ -63,4 +53,4 @@ class Clock.Views.EditablePropertyView extends Backbone.View
       value: this.formatOutput(value)
       input: this.buildInput(value)
     }))
-    return this
+    this
