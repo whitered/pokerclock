@@ -89,6 +89,9 @@ body.clocks {
   }
 
   #players {
+    th { padding-top: 0 }
+    th, td { text-align: right; }
+    th.name, td.name { text-align: left; }
   }
 
   #levels {
@@ -103,7 +106,7 @@ body.clocks {
       li.current {
         .blinds, input { 
           font-weight: bold; 
-          font-size: 6em;
+          font-size: 5em;
           height: auto;
         }
       }

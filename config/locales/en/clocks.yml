@@ -9,8 +9,8 @@ en:
       addon: 'Addon: %{player}'
     timer:
       click_to_toggle: Click to toggle timer
-      game_time: Game time
-      level_duration: Round duration
+      game_time: game time
+      level_duration: round duration
     info:
       buyin: buyin
       rebuy: rebuy

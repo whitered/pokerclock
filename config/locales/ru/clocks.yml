@@ -9,15 +9,15 @@ ru:
       addon: 'Аддон: %{player}'
     timer:
       click_to_toggle: Кликните, чтобы запустить или остановить таймер
-      game_time: Время игры
-      level_duration: Продолжительность раунда
+      game_time: время игры
+      level_duration: продолжительность раунда
     info:
-      buyin: Байин
-      rebuy: Ребай
-      addon: Аддон
-      average: Средний стек
-      total: Всего фишек
-      bank: Банк
+      buyin: байин
+      rebuy: ребай
+      addon: аддон
+      average: средний стек
+      total: всего фишек
+      bank: банк
     levels:
       add: добавить
       blinds_hint: Двойной клик для редактирования
