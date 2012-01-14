@@ -48,6 +48,18 @@ class Clock.Collections.PayoutsCollection extends Backbone.Collection
     nextPayouts = this.filter( (p) => p.get('place') > payout.get('place') )
     _.each(nextPayouts, (p) => p.set({ place: p.get('place') - 1 }))
 
+  moveUp: (payout) =>
+    this.swap(this.at(this.indexOf(payout) - 1), payout)
+
+  moveDown: (payout) =>
+    this.swap(payout, this.at(this.indexOf(payout) + 1))
+
+  swap: (a, b) =>
+    return unless a? && b?
+    p = a.get('place')
+    a.set({ place: b.get('place') })
+    b.set({ place: p })
+
   comparator: (payout) =>
     payout.get('place')
 

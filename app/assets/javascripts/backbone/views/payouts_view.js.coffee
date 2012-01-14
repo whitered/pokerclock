@@ -9,6 +9,8 @@ class Clock.Views.PayoutView extends Backbone.View
     'keypress' : 'updateOnEnter'
     'click a.remove' : 'destroy'
     'click a.change' : 'edit'
+    'click a.up' : 'moveUp'
+    'click a.down' : 'moveDown'
 
   initialize: =>
     this.model.bind('change', this.render)
@@ -31,6 +33,14 @@ class Clock.Views.PayoutView extends Backbone.View
 
   updateOnEnter: (event) =>
     this.display() if event.keyCode == 13
+
+  moveUp: =>
+    this.model.collection.moveUp(this.model)
+    false
+
+  moveDown: =>
+    this.model.collection.moveDown(this.model)
+    false
 
   render: =>
     values = {
