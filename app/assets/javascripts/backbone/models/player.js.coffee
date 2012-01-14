@@ -33,6 +33,9 @@ class Clock.Models.Player extends Backbone.Model
     sum += game.get('addon_chips') if this.get('addon')
     sum
 
+  place: =>
+    this.collection.length - this.get('positionOut') if this.get('positionOut')?
+
 
 
 class Clock.Collections.PlayersCollection extends Backbone.Collection

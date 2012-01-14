@@ -24,6 +24,9 @@ class Clock.Models.Game extends Backbone.Model
     this.bind('change', this.handleChange)
     this.players.bind('sitout', this.handleSitout)
     this.levels.bind('apply', this.applyLevel)
+    this.payouts.bind('change', this.recalculatePayouts)
+    this.payouts.bind('add', this.recalculatePayouts)
+    this.players.bind('add', this.recalculatePayouts)
 
 
   validate: (attrs) =>
@@ -57,6 +60,16 @@ class Clock.Models.Game extends Backbone.Model
       this.set({ gameStart: (new Date).valueOf() - gameTime })
     else
       this.set({ gameDuration: gameTime })
+
+
+  recalculatePayouts: =>
+    totalCharge = this.totalCharge()
+    outsiders = this.players.filter( (player) -> player.get('positionOut')? )
+    _.each(outsiders, (player) =>
+      payout = this.payouts.at(player.place() - 1)
+      win = if payout then payout.calculate(totalCharge) else 0
+      player.set({ win: win })
+    )
     
 
   toggleTimer: =>
