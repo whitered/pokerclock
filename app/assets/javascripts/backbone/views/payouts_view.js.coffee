@@ -12,6 +12,7 @@ class Clock.Views.PayoutView extends Backbone.View
 
   initialize: =>
     this.model.bind('change', this.render)
+    this.el.id = this.model.cid
 
   display: =>
     $(this.el).removeClass('editing')
@@ -22,10 +23,11 @@ class Clock.Views.PayoutView extends Backbone.View
     width = this.$('.display').innerWidth()
     $(this.el).addClass('editing')
     this.$('input').css('width', width).select()
+    false
 
   destroy: =>
     this.model.destroy()
-    return false
+    false
 
   updateOnEnter: (event) =>
     this.display() if event.keyCode == 13
@@ -36,7 +38,7 @@ class Clock.Views.PayoutView extends Backbone.View
       formula: this.model.formula()
     }
     $(this.el).html(this.template(values))
-    return this
+    this
 
 
 
@@ -46,7 +48,10 @@ class Clock.Views.PayoutsView extends Backbone.View
   initialize: =>
     this.game = this.options.game
     this.model = this.game.payouts
-    this.el.sortable({ axis: 'y' })
+    this.el.sortable({
+      axis: 'y'
+      update: this.handleSort
+    })
     this.model.bind('add', this.render)
     this.model.bind('remove', this.render)
     players = this.game.players
@@ -54,6 +59,9 @@ class Clock.Views.PayoutsView extends Backbone.View
     players.bind('remove', this.render)
     players.bind('change', this.render)
     this.render()
+
+  handleSort: (event, ui) =>
+    this.model.setOrder(_.map(this.el.children(), (li) -> li.id))
 
   render: =>
     bank = this.game.totalCharge()
@@ -64,4 +72,4 @@ class Clock.Views.PayoutsView extends Backbone.View
       view.bank = bank
       el.append(view.render().el)
     )
-    return this
+    this

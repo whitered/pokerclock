@@ -1,5 +1,6 @@
 class Clock.Models.Payout extends Backbone.Model
   defaults:
+    place: null
     rate: 0
     percentage: false
 
@@ -33,12 +34,28 @@ class Clock.Collections.PayoutsCollection extends Backbone.Collection
   initialize: =>
     this.bind('add', this.handleAdd)
     this.bind('change', this.handleChange)
+    this.bind('remove', this.handleRemove)
     this.fetch()
 
   handleAdd: (payout) =>
-    payout.save()
+    payout.set({ place: this.length + 1 })
 
   handleChange: (payout) =>
     payout.save()
+    this.sort()
+
+  handleRemove: (payout) =>
+    nextPayouts = this.filter( (p) => p.get('place') > payout.get('place') )
+    _.each(nextPayouts, (p) => p.set({ place: p.get('place') - 1 }))
+
+  comparator: (payout) =>
+    payout.get('place')
+
+  setOrder: (cids) =>
+    payouts = cids.map( (cid) => this.getByCid(cid) )
+    _.each(payouts, (payout, index) =>
+      payout.set({ place: index + 1 })
+    )
+    this.sort()
 
 
