@@ -24,13 +24,13 @@ class Clock.Models.Player extends Backbone.Model
     game = window.game
     sum = game.get('buyin') + game.get('rebuy') * this.get('rebuys')
     sum += game.get('addon') if this.get('addon')
-    return sum
+    sum
 
   chipsBought: =>
     game = window.game
     sum = game.get('buyin_chips') + game.get('rebuy_chips') * this.get('rebuys')
     sum += game.get('addon_chips') if this.get('addon')
-    return sum
+    sum
 
 
 
@@ -53,4 +53,7 @@ class Clock.Collections.PlayersCollection extends Backbone.Collection
     window.undoManager.add(player, player.destroy, null, I18n.t('clocks.action.new_player', { name: player.get('name') }))
 
   comparator: (player) =>
-    player.get('place')
+    if player.isNew()
+      0.5 # it makes new players appear on the bottom of the players list but before sitted out ones
+    else
+      player.get('place')
