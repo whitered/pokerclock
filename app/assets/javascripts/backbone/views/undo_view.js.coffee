@@ -26,6 +26,7 @@ class Clock.Views.UndoView extends Backbone.View
       this.el.html(this.template({ message: this.model.get('message') }))
       this.show()
       this.el.oneTime(10000, 'hide', this.hide)
+      #FIXME: hide is called only once!
     else
       this.el.html('')
-    return this
+    this
