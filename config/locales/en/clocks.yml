@@ -6,15 +6,16 @@ en:
       new_player: 'New player: %{name}'
       sitout: 'Sit out: %{player}'
       rebuy: 'Rebuy: %{player}'
-      addon: 'Addon: %{player}'
+      addon: 'Add-on: %{player}'
     timer:
       click_to_toggle: Click to toggle timer
       game_time: game time
       level_duration: round duration
     info:
-      buyin: buyin
+      title: Game
+      buyin: buy-in
       rebuy: rebuy
-      addon: addon
+      addon: add-on
       average: average
       total: total
       bank: bank
@@ -25,19 +26,21 @@ en:
       apply: start
       change: change
     players:
+      title: Players
       sitout: sit out
       headers:
         place: place
         name: name
-        buyin: buyin
+        buyin: buy-in
         rebuy: rebuy
-        addon: addon
+        addon: add-on
         charge: charge
         win: win
       add:
         placeholder: Add player
         hint: Type the name and press <Enter>
     payouts:
+      title: Payouts
       remove: remove
       change: change
       add:

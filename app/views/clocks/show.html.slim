@@ -14,12 +14,14 @@ html
           ul
           = link_to t('clocks.levels.add'), nil, :class => 'add'
       .row
-        .span3
+        .span4
           #info
           #payouts
+            h5 = t('clocks.payouts.title')
             ol
             = text_field_tag :new_payout, nil, :placeholder => t('clocks.payouts.add.placeholder'), :class => 'add', :title => t('clocks.payouts.add.hint')
-        #players.span9
+        #players.span8
+          h5 = t('clocks.players.title')
           table
             tr
               th = t('clocks.players.headers.place')

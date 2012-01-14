@@ -7,9 +7,9 @@ class Clock.Models.Game extends Backbone.Model
     levelDuration: 20 * 60 * 1000
     gameStart: null
     gameDuration: 0
-    buyin_chips: 1500
-    rebuy_chips: 1500
-    addon_chips: 1500
+    buyin_chips: 5000
+    rebuy_chips: 5000
+    addon_chips: 5000
     buyin: 1
     rebuy: 1
     addon: 1

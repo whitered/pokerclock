@@ -6,38 +6,41 @@ ru:
       new_player: 'Новый игрок: %{name}'
       sitout: '%{player} вылетел'
       rebuy: 'Ребай: %{player}'
-      addon: 'Аддон: %{player}'
+      addon: 'Адд-он: %{player}'
     timer:
       click_to_toggle: Кликните, чтобы запустить или остановить таймер
       game_time: время игры
       level_duration: продолжительность раунда
     info:
-      buyin: байин
+      title: Игра
+      buyin: бай-ин
       rebuy: ребай
-      addon: аддон
+      addon: адд-он
       average: средний стек
       total: всего фишек
       bank: банк
     levels:
-      add: добавить
+      add: добавить уровень
       blinds_hint: Двойной клик для редактирования
       remove: убрать
       apply: начать
       change: изменить
     players:
+      title: Игроки
       sitout: вылетел
       headers:
         place: место
         name: имя
-        buyin: байин
+        buyin: бай-ин
         rebuy: ребай
-        addon: аддон
+        addon: адд-он
         charge: внесено
         win: выигрыш
       add:
         placeholder: Новый игрок
         hint: Введите имя и нажмите <Ввод>
     payouts:
+      title: Призы
       remove: удалить
       change: изменить
       add:

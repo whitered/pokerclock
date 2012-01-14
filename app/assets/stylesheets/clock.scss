@@ -89,7 +89,7 @@ body.clocks {
   }
 
   #players {
-    th { padding-top: 0 }
+    //th { padding-top: 0 }
     th, td { text-align: right; }
     th.name, td.name { text-align: left; }
   }
@@ -131,7 +131,7 @@ body.clocks {
   #payouts {
 
     ol {
-      list-style: upper-roman inside;
+      //list-style: upper-roman inside;
     }
 
     li input { display: none; }
