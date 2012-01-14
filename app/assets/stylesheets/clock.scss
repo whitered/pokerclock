@@ -132,13 +132,16 @@ body.clocks {
 
     ol {
       //list-style: upper-roman inside;
+
+      padding-top: 8px;
+
+      li input { display: none; }
+      li.editing {
+        .display { display: none; }
+        input { display: inline; }
+      }
     }
 
-    li input { display: none; }
-    li.editing {
-      .display { display: none; }
-      input { display: inline; }
-    }
   }
 
   footer {

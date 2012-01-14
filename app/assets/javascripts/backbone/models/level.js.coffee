@@ -1,7 +1,7 @@
 class Clock.Models.Level extends Backbone.Model
   defaults:
-    small: 1
-    big: 2
+    small: 25
+    big: 50
     duration: null
 
   parseString: (value) =>
