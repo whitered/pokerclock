@@ -31,7 +31,6 @@ en:
       headers:
         place: place
         name: name
-        buyin: buy-in
         rebuy: rebuy
         addon: add-on
         charge: charge
