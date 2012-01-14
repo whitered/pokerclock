@@ -4,7 +4,8 @@ class Clock.Models.Player extends Backbone.Model
     name: null
     rebuys: 0
     addon: false
-    place: null
+    positionIn: null
+    positionOut: null
     win: 0
 
   initialize: =>
@@ -35,6 +36,7 @@ class Clock.Models.Player extends Backbone.Model
 
 
 class Clock.Collections.PlayersCollection extends Backbone.Collection
+
   model: Clock.Models.Player
 
   localStorage: new Store('players')
@@ -49,11 +51,12 @@ class Clock.Collections.PlayersCollection extends Backbone.Collection
     this.sort()
 
   handleAdd: (player) =>
+    player.set({ positionIn: this.length - 1 })
     player.save()
     window.undoManager.add(player, player.destroy, null, I18n.t('clocks.action.new_player', { name: player.get('name') }))
 
   comparator: (player) =>
-    if player.isNew()
-      0.5 # it makes new players appear on the bottom of the players list but before sitted out ones
+    if player.get('positionOut')?
+      this.length * 2 - player.get('positionOut')
     else
-      player.get('place')
+      player.get('positionIn')

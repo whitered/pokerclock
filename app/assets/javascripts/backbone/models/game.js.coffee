@@ -33,7 +33,7 @@ class Clock.Models.Game extends Backbone.Model
 
 
   activePlayers: =>
-    this.players.filter( (player) -> !player.get('place')? )
+    this.players.filter( (player) -> !player.get('positionOut')? )
 
 
   handleChange: =>
@@ -41,11 +41,12 @@ class Clock.Models.Game extends Backbone.Model
 
 
   handleSitout: (player) =>
-    place = this.players.filter( (player) -> return player.get('place') == null ).length
-    payout = this.payouts.at(place - 1)
+    numActivePlayers = this.activePlayers().length
+    positionOut = this.players.length - numActivePlayers
+    payout = this.payouts.at(numActivePlayers - 1)
     win = if payout then payout.calculate(this.totalCharge()) else 0
-    player.set({ place: place, win: win })
-    window.undoManager.add(player, player.set, { place: null, win: null }, I18n.t('clocks.action.sitout', player:  player.get('name')))
+    player.set({ positionOut: positionOut, win: win })
+    window.undoManager.add(player, player.set, { positionOut: null, win: null }, I18n.t('clocks.action.sitout', player:  player.get('name')))
 
 
   applyLevel: (level) =>
