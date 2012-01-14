@@ -24,6 +24,9 @@ class Clock.Models.Game extends Backbone.Model
     this.bind('change', this.handleChange)
     this.players.bind('sitout', this.handleSitout)
     this.levels.bind('apply', this.applyLevel)
+    this.payouts.bind('change', this.recalculatePayouts)
+    this.payouts.bind('add', this.recalculatePayouts)
+    this.players.bind('add', this.recalculatePayouts)
 
 
   validate: (attrs) =>
@@ -33,7 +36,7 @@ class Clock.Models.Game extends Backbone.Model
 
 
   activePlayers: =>
-    this.players.filter( (player) -> !player.get('place')? )
+    this.players.filter( (player) -> !player.get('positionOut')? )
 
 
   handleChange: =>
@@ -41,11 +44,12 @@ class Clock.Models.Game extends Backbone.Model
 
 
   handleSitout: (player) =>
-    place = this.players.filter( (player) -> return player.get('place') == null ).length
-    payout = this.payouts.at(place - 1)
+    numActivePlayers = this.activePlayers().length
+    positionOut = this.players.length - numActivePlayers
+    payout = this.payouts.at(numActivePlayers - 1)
     win = if payout then payout.calculate(this.totalCharge()) else 0
-    player.set({ place: place, win: win })
-    window.undoManager.add(player, player.set, { place: null, win: null }, I18n.t('clocks.action.sitout', player:  player.get('name')))
+    player.set({ positionOut: positionOut, win: win })
+    window.undoManager.add(player, player.set, { positionOut: null, win: null }, I18n.t('clocks.action.sitout', player:  player.get('name')))
 
 
   applyLevel: (level) =>
@@ -56,6 +60,16 @@ class Clock.Models.Game extends Backbone.Model
       this.set({ gameStart: (new Date).valueOf() - gameTime })
     else
       this.set({ gameDuration: gameTime })
+
+
+  recalculatePayouts: =>
+    totalCharge = this.totalCharge()
+    outsiders = this.players.filter( (player) -> player.get('positionOut')? )
+    _.each(outsiders, (player) =>
+      payout = this.payouts.at(player.place() - 1)
+      win = if payout then payout.calculate(totalCharge) else 0
+      player.set({ win: win })
+    )
     
 
   toggleTimer: =>

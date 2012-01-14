@@ -15,21 +15,22 @@ class Clock.Views.PlayerView extends Backbone.View
   handleRebuy: =>
     num = this.model.get('rebuys')
     this.model.set({ rebuys: num + 1 })
-    return false
+    false
 
   handleAddon: =>
     this.model.set({ addon: true })
-    return false
+    false
 
   handleSitout: =>
     this.model.trigger('sitout', this.model)
-    return false
+    false
 
   render: =>
     values = this.model.toJSON()
     values['charge'] = this.model.charge()
+    values['place'] = this.model.place()
     $(this.el).html(this.template(values))
-    return this
+    this
 
  
 
@@ -60,5 +61,5 @@ class Clock.Views.PlayersView extends Backbone.View
     )
     this.views = []
     this.collection.each(this.addOne)
-    return this
+    this
 

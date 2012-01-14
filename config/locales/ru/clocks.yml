@@ -31,7 +31,6 @@ ru:
       headers:
         place: место
         name: имя
-        buyin: бай-ин
         rebuy: ребай
         addon: адд-он
         charge: внесено
