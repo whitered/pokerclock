@@ -8,7 +8,7 @@
     <li><a href="#" class="up" title="<%= I18n.t('clocks.payouts.up_hint') %>">[&uarr;]</a> <a href="#" class="down" title="<%= I18n.t('clocks.payouts.down_hint') %>">[&darr;]</a></li>
   </ul>
 </span>
-<% if(percentage) { %>
-  <span>(<%= formula %>)</span>
-<% } %>
 <input type="text" value="<%= formula %>" />
+<% if(percentage) { %>
+  <span class="formula">(<%= formula %>)</span>
+<% } %>

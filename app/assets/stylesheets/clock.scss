@@ -148,7 +148,7 @@ body.clocks {
       }
 
       li.editing {
-        .display { display: none; }
+        .display, .formula { display: none; }
         input { display: inline; }
       }
 

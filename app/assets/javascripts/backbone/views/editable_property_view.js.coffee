@@ -27,7 +27,6 @@ class Clock.Views.EditablePropertyView extends Backbone.View
     this.el.addClass('editing')
     input.select()
 
-
   update: =>
     this.el.removeClass('editing')
     value = this.processInput(this.$('input').val())
@@ -36,8 +35,7 @@ class Clock.Views.EditablePropertyView extends Backbone.View
     this.model.set(values)
 
   updateOnEnter: (event) =>
-    return if event.keyCode != 13
-    this.update()
+    this.update() if event.keyCode == 13
 
   buildInput: (value) =>
     html = '<input'
@@ -49,7 +47,7 @@ class Clock.Views.EditablePropertyView extends Backbone.View
 
   render: =>
     value = this.model.get(this.options.property)
-    this.el.html(this.template({ 
+    this.el.html(this.template({
       value: this.formatOutput(value)
       input: this.buildInput(value)
     }))
