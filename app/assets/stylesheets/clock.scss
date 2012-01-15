@@ -3,7 +3,8 @@
  */
 
 $hovered: #FFC;
-$runningTimer: #363;
+$runningTimer: #333;
+$stoppedTimer: #999;
 $actionsBackground: white;
 $actionsBorder: lightgray;
 $actionsShadow: #999;
@@ -76,6 +77,7 @@ body.clocks {
       font-size: 12em;
       line-height: 1;
       cursor: pointer;
+      color: $stoppedTimer;
     }
 
     #round_time_left.running {
@@ -107,7 +109,6 @@ body.clocks {
 
       li.current {
         .blinds, input { 
-          font-weight: bold; 
           font-size: 5em;
           height: auto;
         }
