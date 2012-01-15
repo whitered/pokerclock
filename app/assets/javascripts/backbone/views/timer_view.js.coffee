@@ -14,7 +14,7 @@ class Clock.Views.TimerView extends Backbone.View
       model: this.model
       property: 'levelDuration'
       adjustInputWidth: true
-      formatInput: (value) => this.formatTime(value / 1000)
+      formatInput: (value) => this.formatTime(value / 1000, false)
       formatOutput: (value) => this.formatTime(value / 1000)
       processInput: (value) =>
         matches = value.match(/(\d+)\D*(\d+)?/)
@@ -35,15 +35,22 @@ class Clock.Views.TimerView extends Backbone.View
   toggleTimer: =>
     this.model.toggleTimer()
 
-  formatTime: (seconds) =>
-    seconds ||= 0
-    negative = seconds < 0
-    seconds = -seconds if negative
-    m = Math.floor(seconds / 60)
-    s = seconds % 60
+  formatTime: (seconds, withHours = true) =>
+    s = seconds || 0
+    negative = s < 0
+    s = -s if negative
+    if withHours
+      h = Math.floor(s / 3600)
+      s = s % 3600
+    else
+      h = 0
+    m = Math.floor(s / 60)
+    s = s % 60
     m = '0' + m if m < 10
     s = '0' + s if s < 10
-    (if negative then '-' else '') + m + ':' + s
+    t = m + ':' + s
+    t = h + ':' + t if h > 0
+    (if negative then '-' else '') + t
 
   render: =>
     info = this.model.currentLevelInfo()

@@ -3,7 +3,6 @@
  */
 
 $hovered: #FFC;
-$runningTimer: #333;
 $stoppedTimer: #999;
 $actionsBackground: white;
 $actionsBorder: lightgray;
@@ -81,7 +80,7 @@ body.clocks {
     }
 
     #round_time_left.running {
-      color: $runningTimer;
+      color: inherit;
     }
 
     #game_time {
