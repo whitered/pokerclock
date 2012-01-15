@@ -141,6 +141,9 @@ body.clocks {
         .display { display: none; }
         input { display: inline; }
       }
+
+      li:first-child ul.actions a.up { display: none; }
+      li:last-child ul.actions a.down { display: none; }
     }
 
   }
