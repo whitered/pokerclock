@@ -24,6 +24,7 @@ body.clocks {
 
   .hoverable.hoverhighlight:hover, .hoverable:hover .hoverhighlight {
     background: $hovered;
+    border-radius: 2px;
   }
 
   .editing .hovervisible { visibility: hidden; }
@@ -52,6 +53,7 @@ body.clocks {
     background: $actionsBackground;
     border: 1px solid $actionsBorder;
     box-shadow: 1px 1px 2px $actionsShadow;
+    z-index: 1;
   }
 
   a.action {
@@ -135,11 +137,23 @@ body.clocks {
 
       padding-top: 8px;
 
-      li input { display: none; }
+      li {
+        line-height: normal;
+        input { display: none; }
+        span.amount { font-size: 1.5em; }
+      }
+
+      li:first-child {
+        span.amount { font-size: 2em; }
+      }
+
       li.editing {
-        .display { display: none; }
+        .display, .formula { display: none; }
         input { display: inline; }
       }
+
+      li:first-child ul.actions a.up { display: none; }
+      li:last-child ul.actions a.down { display: none; }
     }
 
   }

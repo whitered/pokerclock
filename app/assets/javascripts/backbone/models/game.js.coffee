@@ -26,6 +26,8 @@ class Clock.Models.Game extends Backbone.Model
     this.levels.bind('apply', this.applyLevel)
     this.payouts.bind('change', this.recalculatePayouts)
     this.payouts.bind('add', this.recalculatePayouts)
+    this.payouts.bind('remove', this.recalculatePayouts)
+    this.payouts.bind('reset', this.recalculatePayouts)
     this.players.bind('add', this.recalculatePayouts)
 
 

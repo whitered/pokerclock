@@ -42,6 +42,8 @@ en:
       title: Payouts
       remove: remove
       change: change
+      up_hint: Move up
+      down_hint: Move down
       add:
         placeholder: Add payout place
         hint: Enter the payout value and press <Enter>. Use "%" symbol to specify percentage

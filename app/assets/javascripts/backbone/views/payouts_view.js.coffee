@@ -4,39 +4,53 @@ class Clock.Views.PayoutView extends Backbone.View
   template: JST['backbone/templates/payout']
 
   events:
-    'blur input' : 'display'
     'dblclick' : 'edit'
-    'keypress' : 'updateOnEnter'
-    'click a.remove' : 'destroy'
+    'blur input' : 'update'
+    'keypress input' : 'updateOnEnter'
     'click a.change' : 'edit'
+    'click a.remove' : 'destroy'
+    'click a.up' : 'moveUp'
+    'click a.down' : 'moveDown'
 
   initialize: =>
     this.model.bind('change', this.render)
-
-  display: =>
-    $(this.el).removeClass('editing')
-    this.model.parseString(this.$('input').val())
-    this.$('input').val(this.model.formula())
+    this.el.id = this.model.cid
 
   edit: =>
     width = this.$('.display').innerWidth()
     $(this.el).addClass('editing')
     this.$('input').css('width', width).select()
+    false
+
+  update: =>
+    input = this.$('input')
+    $(this.el).removeClass('editing')
+    this.model.parseString(input.val())
+    input.val(this.model.formula())
 
   destroy: =>
     this.model.destroy()
-    return false
+    false
 
   updateOnEnter: (event) =>
-    this.display() if event.keyCode == 13
+    this.update() if event.keyCode == 13
+
+  moveUp: =>
+    this.model.collection.moveUp(this.model)
+    false
+
+  moveDown: =>
+    this.model.collection.moveDown(this.model)
+    false
 
   render: =>
     values = {
-      value: I18n.toCurrency(this.model.value(this.bank))
+      value: I18n.toCurrency(this.model.value(this.options.bank))
       formula: this.model.formula()
+      percentage: this.model.get('percentage')
     }
     $(this.el).html(this.template(values))
-    return this
+    this
 
 
 
@@ -46,7 +60,10 @@ class Clock.Views.PayoutsView extends Backbone.View
   initialize: =>
     this.game = this.options.game
     this.model = this.game.payouts
-    this.el.sortable({ axis: 'y' })
+    this.el.sortable({
+      axis: 'y'
+      update: this.handleSort
+    })
     this.model.bind('add', this.render)
     this.model.bind('remove', this.render)
     players = this.game.players
@@ -55,13 +72,15 @@ class Clock.Views.PayoutsView extends Backbone.View
     players.bind('change', this.render)
     this.render()
 
+  handleSort: (event, ui) =>
+    this.model.setOrder(_.map(this.el.children(), (li) -> li.id))
+
   render: =>
     bank = this.game.totalCharge()
     el = this.el
     this.el.empty()
     this.model.each( (payout) ->
-      view = new Clock.Views.PayoutView({ model: payout })
-      view.bank = bank
+      view = new Clock.Views.PayoutView({ model: payout, bank: bank })
       el.append(view.render().el)
     )
-    return this
+    this
