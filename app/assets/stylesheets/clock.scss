@@ -24,6 +24,7 @@ body.clocks {
 
   .hoverable.hoverhighlight:hover, .hoverable:hover .hoverhighlight {
     background: $hovered;
+    border-radius: 2px;
   }
 
   .editing .hovervisible { visibility: hidden; }
@@ -136,7 +137,16 @@ body.clocks {
 
       padding-top: 8px;
 
-      li input { display: none; }
+      li {
+        line-height: normal;
+        input { display: none; }
+        span.amount { font-size: 1.5em; }
+      }
+
+      li:first-child {
+        span.amount { font-size: 2em; }
+      }
+
       li.editing {
         .display { display: none; }
         input { display: inline; }

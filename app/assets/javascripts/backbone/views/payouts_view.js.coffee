@@ -46,6 +46,7 @@ class Clock.Views.PayoutView extends Backbone.View
     values = {
       value: I18n.toCurrency(this.model.value(this.bank))
       formula: this.model.formula()
+      percentage: this.model.get('percentage')
     }
     $(this.el).html(this.template(values))
     this

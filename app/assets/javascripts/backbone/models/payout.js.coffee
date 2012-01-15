@@ -10,14 +10,14 @@ class Clock.Models.Payout extends Backbone.Model
 
   formula: =>
     rate = this.get('rate')
-    if this.get('percentage') then rate + '%' else rate
+    if this.get('percentage') then rate + '%' else I18n.toCurrency(rate)
 
   value: (bank) =>
     rate = this.get('rate')
     if this.get('percentage') then rate * bank / 100 else rate
 
   parseString: (str) =>
-    md = str.match /(\d+)(%?)/
+    md = str.match /(\d+)\s*(%?)/
     if md
       rate = Number(md[1])
       percentage = md[2].length == 1
