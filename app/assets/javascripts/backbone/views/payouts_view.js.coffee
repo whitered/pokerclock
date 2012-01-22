@@ -64,12 +64,17 @@ class Clock.Views.PayoutsView extends Backbone.View
       axis: 'y'
       update: this.handleSort
     })
+    this.el.mousedown( =>
+      document.activeElement.blur() if document.activeElement.nodeName == 'INPUT'
+    )
     this.model.bind('add', this.render)
     this.model.bind('remove', this.render)
     players = this.game.players
     players.bind('add', this.render)
     players.bind('remove', this.render)
     players.bind('change', this.render)
+    this.game.bind('change:rebuy', this.render)
+    this.game.bind('change:addon', this.render)
     this.render()
 
   handleSort: (event, ui) =>

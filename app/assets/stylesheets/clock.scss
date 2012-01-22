@@ -89,12 +89,24 @@ body.clocks {
   }
 
   #info {
+    table.rebuys tr.no-rebuys,
+    table.no-rebuys tr.rebuys,
+    table.addon tr.no-addon,
+    table.no-addon tr.addon { display: none; }
+
+    table tr td:last-child { text-align: right; }
+
   }
 
   #players {
-    //th { padding-top: 0 }
-    th, td { text-align: right; }
-    th.name, td.name { text-align: left; }
+
+    table {
+      th, td { text-align: right; }
+      th.name, td.name, th.place, td.place { text-align: left; }
+    }
+
+    table.no-rebuys .rebuys, table.no-addon .addon { display: none; }
+
   }
 
   #levels {

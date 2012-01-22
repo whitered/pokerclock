@@ -48,6 +48,8 @@ class Clock.Views.PlayersView extends Backbone.View
     this.render()
 
   update: =>
+    this.el.toggleClass('no-rebuys', !this.model.get('rebuy'))
+    this.el.toggleClass('no-addon', !this.model.get('addon'))
     _.each(this.views, (view) -> view.render() )
 
   addOne: (player) =>

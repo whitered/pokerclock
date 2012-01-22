@@ -15,7 +15,15 @@ ru:
       title: Игра
       buyin: бай-ин
       rebuy: ребай
+      add_rebuys:
+        title: Разрешить ребаи
+      remove_rebuys:
+        title: Без ребаев
       addon: адд-он
+      add_addon:
+        title: Разрешить адд-он
+      remove_addon:
+        title: Без адд-она
       average: средний стек
       total: всего фишек
       bank: банк
@@ -31,7 +39,7 @@ ru:
       headers:
         place: место
         name: имя
-        rebuy: ребай
+        rebuy: ребаи
         addon: адд-он
         charge: внесено
         win: выигрыш

@@ -2,15 +2,35 @@
 <table>
   <tr>
     <td><%= I18n.t('clocks.info.buyin') %></td>
-    <td><span id="buyin" /> &rarr; <span id="buyin_chips" /></td>
+    <td><span id="buyin_money" /> &rarr; <span id="buyin_chips" /></td>
   </tr>
-  <tr>
-    <td><%= I18n.t('clocks.info.rebuy') %></td>
-    <td><span id="rebuy" /> &rarr; <span id="rebuy_chips" /></td>
+  <tr class="rebuys">
+    <td class="hoverable">
+      <span class="hoverhighlight"><%= I18n.t('clocks.info.rebuy') %></span>
+      <a href="#" class="hovervisible action remove_rebuys" title="<%= I18n.t('clocks.info.remove_rebuys.title') %>">×</a>
+    </td>
+    <td><span id="rebuy_money" /> &rarr; <span id="rebuy_chips" /></td>
   </tr>
-  <tr>
-    <td><%= I18n.t('clocks.info.addon') %></td>
-    <td><span id="addon" /> &rarr; <span id="addon_chips" /></td>
+  <tr class="no-rebuys">
+    <td class="hoverable">
+      <span class="hoverhighlight"><%= I18n.t('clocks.info.rebuy') %></span>
+      <a href="#" class="hovervisible action add_rebuys" title="<%= I18n.t('clocks.info.add_rebuys.title') %>">+</a>
+    </td>
+    <td>&mdash;</td>
+  </tr>
+  <tr class="addon">
+    <td class="hoverable">
+      <span class="hoverhighlight"><%= I18n.t('clocks.info.addon') %></span>
+      <a href="#" class="hovervisible action remove_addon" title="<%= I18n.t('clocks.info.remove_addon.title') %>">×</a>
+    </td>
+    <td><span id="addon_money" /> &rarr; <span id="addon_chips" /></td>
+  </tr>
+  <tr class="no-addon">
+    <td class="hoverable">
+      <span class="hoverhighlight"><%= I18n.t('clocks.info.addon') %></span>
+      <a href="#" class="hovervisible action add_addon" title="<%= I18n.t('clocks.info.add_addon.title') %>">+</a>
+    </td>
+    <td>&mdash;</td>
   </tr>
   <tr>
     <td><%= I18n.t('clocks.info.average') %></td>
