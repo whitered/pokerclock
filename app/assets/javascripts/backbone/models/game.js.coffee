@@ -7,12 +7,15 @@ class Clock.Models.Game extends Backbone.Model
     levelDuration: 20 * 60 * 1000
     gameStart: null
     gameDuration: 0
+    buyin: true
+    rebuy: true
+    addon: true
+    buyin_money: 10
+    rebuy_money: 10
+    addon_money: 10
     buyin_chips: 5000
     rebuy_chips: 5000
     addon_chips: 5000
-    buyin: 10
-    rebuy: 10
-    addon: 10
     description: null
 
 
@@ -29,12 +32,6 @@ class Clock.Models.Game extends Backbone.Model
     this.payouts.bind('remove', this.recalculatePayouts)
     this.payouts.bind('reset', this.recalculatePayouts)
     this.players.bind('add', this.recalculatePayouts)
-
-
-  validate: (attrs) =>
-    _.each("buyin rebuy addon buyin_chips rebuy_chips addon_chips".split(' '), (attr) ->
-      attrs[attr] = Number(attrs[attr]) if attrs[attr]
-    )
 
 
   activePlayers: =>

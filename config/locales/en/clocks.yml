@@ -15,7 +15,15 @@ en:
       title: Game
       buyin: buy-in
       rebuy: rebuy
+      add_rebuys:
+        title: Allow rebuys
+      remove_rebuys:
+        title: No rebuys
       addon: add-on
+      add_addon:
+        title: Allow add-on
+      remove_addon:
+        title: No add-on
       average: average
       total: total
       bank: bank
@@ -31,7 +39,7 @@ en:
       headers:
         place: place
         name: name
-        rebuy: rebuy
+        rebuy: rebuys
         addon: add-on
         charge: charge
         win: win

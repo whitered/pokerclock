@@ -73,6 +73,8 @@ class Clock.Views.PayoutsView extends Backbone.View
     players.bind('add', this.render)
     players.bind('remove', this.render)
     players.bind('change', this.render)
+    this.game.bind('change:rebuy', this.render)
+    this.game.bind('change:addon', this.render)
     this.render()
 
   handleSort: (event, ui) =>

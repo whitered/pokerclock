@@ -14,20 +14,20 @@ html
           ul
           = link_to t('clocks.levels.add'), nil, :class => 'add'
       .row
-        .span4
+        .span3
           #info
           #payouts
             h5 = t('clocks.payouts.title')
             ol
             = text_field_tag :new_payout, nil, :placeholder => t('clocks.payouts.add.placeholder'), :class => 'add', :title => t('clocks.payouts.add.hint')
-        #players.span8
+        #players.span8.offset1
           h5 = t('clocks.players.title')
           table
             tr
-              th = t('clocks.players.headers.place')
+              th.place = t('clocks.players.headers.place')
               th.name = t('clocks.players.headers.name')
-              th = t('clocks.players.headers.rebuy')
-              th = t('clocks.players.headers.addon')
+              th.rebuys = t('clocks.players.headers.rebuy')
+              th.addon = t('clocks.players.headers.addon')
               th = t('clocks.players.headers.charge')
               th = t('clocks.players.headers.win')
           = text_field_tag :new_player_name, nil, :placeholder => t('clocks.players.add.placeholder'), :class => 'add', :title => t('clocks.players.add.hint')

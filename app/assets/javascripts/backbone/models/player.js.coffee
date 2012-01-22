@@ -23,14 +23,16 @@ class Clock.Models.Player extends Backbone.Model
   
   charge: =>
     game = window.game
-    sum = game.get('buyin') + game.get('rebuy') * this.get('rebuys')
-    sum += game.get('addon') if this.get('addon')
+    sum = game.get('buyin_money')
+    sum += game.get('rebuy_money') * this.get('rebuys') if game.get('rebuy')
+    sum += game.get('addon_money') if game.get('addon') && this.get('addon')
     sum
 
   chipsBought: =>
     game = window.game
-    sum = game.get('buyin_chips') + game.get('rebuy_chips') * this.get('rebuys')
-    sum += game.get('addon_chips') if this.get('addon')
+    sum = game.get('buyin_chips')
+    sum += game.get('rebuy_chips') * this.get('rebuys') if game.get('rebuy')
+    sum += game.get('addon_chips') if game.get('addon') && this.get('addon')
     sum
 
   place: =>
