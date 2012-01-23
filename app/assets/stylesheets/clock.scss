@@ -11,8 +11,8 @@ $actionsShadow: #999;
 body.clocks {
 
   #firstrow {
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin-top: 3em;
+    margin-bottom: 3em;
   }
 
 
@@ -63,10 +63,9 @@ body.clocks {
 
   #undo { 
     position: absolute;
-    .undo {
-      float: right;
-      color: white;
-      margin-right: 1em;
+    .alert {
+      .undo { float: right; }
+      .close { line-height: inherit; }
     }
   }
 
@@ -105,7 +104,8 @@ body.clocks {
       th.name, td.name, th.place, td.place { text-align: left; }
     }
 
-    table.no-rebuys .rebuys, table.no-addon .addon { display: none; }
+    table.no-rebuys .rebuys,
+    table.no-addon .addon { display: none; }
 
   }
 

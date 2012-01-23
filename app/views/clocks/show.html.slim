@@ -17,12 +17,12 @@ html
         .span4
           #info
           #payouts
-            h5 = t('clocks.payouts.title')
+            h4 = t('clocks.payouts.title')
             ol
             = text_field_tag :new_payout, nil, :placeholder => t('clocks.payouts.add.placeholder'), :class => 'add', :title => t('clocks.payouts.add.hint')
         #players.span8
-          h5 = t('clocks.players.title')
-          table
+          h4 = t('clocks.players.title')
+          table.table
             tr
               th.place = t('clocks.players.headers.place')
               th.name = t('clocks.players.headers.name')
