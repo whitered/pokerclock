@@ -6,14 +6,13 @@ class Clock.Models.Player extends Backbone.Model
     addon: false
     positionIn: null
     positionOut: null
-    win: 0
 
   initialize: =>
     this.bind('change:rebuys', this.handleChangeRebuys)
     this.bind('change:addon', this.handleChangeAddon)
 
   validate: =>
-    return 'Player should have name' unless this.get('name')
+    return 'Player should have name' unless this.get('name')?
 
   handleChangeRebuys: =>
     window.undoManager.add(this, this.set, { rebuys: this.previous('rebuys') }, I18n.t('clocks.action.rebuy', player: this.get('name')))
@@ -38,7 +37,14 @@ class Clock.Models.Player extends Backbone.Model
   place: =>
     this.collection.length - this.get('positionOut') if this.get('positionOut')?
 
-
+  win: =>
+    place = this.place()
+    if place?
+      payout = window.game.payouts.at(place - 1)
+      if payout?
+        payout.value(window.game.totalCharge())
+      else
+        0
 
 class Clock.Collections.PlayersCollection extends Backbone.Collection
 

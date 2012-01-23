@@ -29,6 +29,7 @@ class Clock.Views.PlayerView extends Backbone.View
     values = this.model.toJSON()
     values['charge'] = this.model.charge()
     values['place'] = this.model.place()
+    values['win'] = this.model.win()
     $(this.el).html(this.template(values))
     this
 

@@ -9,4 +9,4 @@
   <% } %>
 </td>
 <td><%= I18n.toCurrency(charge) %></td>
-<td><%= place ? I18n.toCurrency(win) : '' %></td>
+<td><% if(win != null){ %><%= I18n.toCurrency(win) %><% } %></td>
