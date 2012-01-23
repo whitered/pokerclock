@@ -48,21 +48,20 @@ class Clock.Views.PlayersView extends Backbone.View
     this.model.bind('change:addon', this.update)
     this.render()
 
+  views: []
+
   update: =>
     this.el.toggleClass('no-rebuys', !this.model.get('rebuy'))
     this.el.toggleClass('no-addon', !this.model.get('addon'))
     _.each(this.views, (view) -> view.render() )
 
-  addOne: (player) =>
-    view = new Clock.Views.PlayerView({ model: player })
-    $(this.el).append(view.render().el)
-    this.views.push(view)
-
   render: =>
-    _.each(this.views, (view) ->
-      view.remove()
+    _.each(this.views, (view) -> view.remove())
+    this.views = this.collection.map( (player) =>
+      view = new Clock.Views.PlayerView({ model: player })
+      this.el.append(view.el)
+      view
     )
-    this.views = []
-    this.collection.each(this.addOne)
+    this.update()
     this
 
