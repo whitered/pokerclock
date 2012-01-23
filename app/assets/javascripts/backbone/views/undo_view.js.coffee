@@ -7,26 +7,18 @@ class Clock.Views.UndoView extends Backbone.View
     'click a.undo' : 'undo'
 
   initialize: =>
-    this.model.bind('change', this.handleChange)
-
-  handleChange: =>
-    this.render()
+    this.model.bind('change', this.render)
 
   undo: =>
     this.model.undo()
-
-  hide: =>
-    this.el.fadeOut(2000)
-
-  show: =>
-    this.el.fadeIn(200)
+    false
 
   render: =>
     if this.model.get('method')
       this.el.html(this.template({ message: this.model.get('message') }))
-      this.show()
-      this.el.oneTime(10000, 'hide', this.hide)
-      #FIXME: hide is called only once!
+      alert = this.$('.alert').first()
+      alert.alert()
+      alert.oneTime(10000, () -> alert.alert('close'))
     else
       this.el.html('')
     this
