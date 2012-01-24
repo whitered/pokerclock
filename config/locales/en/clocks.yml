@@ -11,6 +11,7 @@ en:
       click_to_toggle: Click to toggle timer
       game_time: game time
       level_duration: round duration
+      level_duration_change: change
     info:
       title: Game
       buyin: buy-in
