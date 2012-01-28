@@ -13,7 +13,7 @@ class Clock.Views.EditableView extends Backbone.View
 
   handleKeyDown: (event) =>
     if event.keyCode == 13
-      this.update()
+      document.activeElement.blur()
     else if event.keyCode == 27
       this.display()
 

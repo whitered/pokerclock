@@ -121,7 +121,10 @@ body.clocks {
     >ul {
       list-style: none;
 
-      >li { line-height: 1.2; }
+      >li {
+        line-height: 1.2;
+        input { display: inline; }
+      }
 
       li.current {
         .blinds, input { 
@@ -136,14 +139,6 @@ body.clocks {
           height: auto;
         }
       }
-    }
-
-    .editing .display, .edit {
-      display: none;
-    }
-
-    .editing .edit {
-      display: inline;
     }
   }
 
