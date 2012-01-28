@@ -35,3 +35,8 @@ class Clock.Views.EditableView extends Backbone.View
     this.inputElement.select()
     false
 
+  render: =>
+    this.inputElement.val(this.options.inputText())
+    this.valueHolder.text(this.options.displayText())
+    this
+

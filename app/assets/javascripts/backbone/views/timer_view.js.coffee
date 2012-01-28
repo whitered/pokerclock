@@ -5,11 +5,8 @@ class Clock.Views.TimerView extends Backbone.View
 
   initialize: =>
     this.el.html(this.template())
-    this.model.bind('change:gameStart', this.syncTimer)
-    this.model.bind('change:gameDuration', this.render)
-    this.model.bind('change:levelDuration', this.render)
     this.syncTimer(this.model, this.model.get('gameStart'))
-    new Clock.Views.EditableView({
+    levelDurationView = new Clock.Views.EditableView({
       displayElement: this.$('#level_duration_display')
       valueHolder: this.$('#level_duration_display>span')
       inputElement: this.$('#level_duration_input')
@@ -22,6 +19,10 @@ class Clock.Views.TimerView extends Backbone.View
           ms = matches[1] * 60000 + (matches[2] || 0) * 1000
           this.model.set({ levelDuration: ms })
     })
+    this.model.bind('change:gameStart', this.syncTimer)
+    this.model.bind('change:gameDuration', this.render)
+    this.model.bind('change:levelDuration', this.render)
+    this.model.bind('change:levelDuration', levelDurationView.render)
 
   events:
     'click #round_time_left': 'toggleTimer'
