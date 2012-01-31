@@ -8,11 +8,12 @@ class Clock.Views.TimerView extends Backbone.View
     this.syncTimer(this.model, this.model.get('gameStart'))
     levelDurationView = new Clock.Views.EditableView({
       displayElement: this.$('#level_duration_display')
-      valueHolder: this.$('#level_duration_display>span')
       inputElement: this.$('#level_duration_input')
       changeLink: this.$('#level_duration_display a.action')
-      displayText: => this.formatTime(this.model.get('levelDuration') / 1000)
       inputText: => this.formatTime(this.model.get('levelDuration') / 1000, false)
+      renderValue: =>
+        text = this.formatTime(this.model.get('levelDuration') / 1000)
+        this.$('#level_duration_display>span').text(text)
       update: (value) =>
         matches = value.match(/(\d+)\D*(\d+)?/)
         if matches?

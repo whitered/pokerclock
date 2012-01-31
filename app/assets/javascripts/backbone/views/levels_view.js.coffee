@@ -8,11 +8,12 @@ class Clock.Views.LevelView extends Backbone.View
     $(this.el).html(this.template())
     blindsView = new Clock.Views.EditableView({
       displayElement: this.$('span.hoverable')
-      valueHolder: this.$('span.blinds')
       inputElement: this.$('input')
       changeLink: this.$('ul.actions a.change')
-      displayText: => this.model.get('small') + ' / ' + this.model.get('big')
       inputText: => this.model.get('small') + ' / ' + this.model.get('big')
+      renderValue: =>
+        text = this.model.get('small') + ' / ' + this.model.get('big')
+        this.$('span.blinds').text(text)
       update: (value) =>
         matches = value.match(/(\d+)\D*(\d+)?/)
         if matches?
@@ -24,7 +25,6 @@ class Clock.Views.LevelView extends Backbone.View
     this.model.bind('change', blindsView.render)
     this.model.bind('change', this.handleChange)
     this.model.bind('destroy', => this.remove() )
-    this.$('input').blur( => console.log('blur!') )
 
   handleChange: =>
     this.highlight()
