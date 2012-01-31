@@ -7,8 +7,6 @@ class Clock.Views.EditableView extends Backbone.View
     if this.options.changeLink?
       this.options.changeLink.bind('click', this.edit)
     this.displayElement.bind('dblclick', this.edit)
-    this.inputElement.bind('keydown', this.handleKeyDown)
-    this.inputElement.bind('blur', this.update)
     this.display()
 
   handleKeyDown: (event) =>
@@ -18,6 +16,8 @@ class Clock.Views.EditableView extends Backbone.View
       this.display()
 
   display: =>
+    this.inputElement.unbind('blur', this.update)
+    this.inputElement.unbind('keydown', this.handleKeyDown)
     this.valueHolder.text(this.options.displayText())
     this.displayElement.show()
     this.inputElement.hide()
@@ -29,6 +29,8 @@ class Clock.Views.EditableView extends Backbone.View
     false
 
   edit: =>
+    this.inputElement.bind('blur', this.update)
+    this.inputElement.bind('keydown', this.handleKeyDown)
     this.inputElement.val(this.options.inputText())
     this.displayElement.hide()
     this.inputElement.show()
