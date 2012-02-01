@@ -6,7 +6,11 @@
 initializeLocale()
 
 game = new Clock.Models.Game({ id: 1 })
-game.fetch()
+game.fetch({
+  error: =>
+    game.reset()
+    game.save()
+})
 
 window.game = game
 window.undoManager = new Clock.Models.UndoManager
