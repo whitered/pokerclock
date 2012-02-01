@@ -123,7 +123,11 @@ body.clocks {
 
       >li {
         line-height: 1.2;
-        input { display: inline; }
+
+        input {
+          display: inline;
+          width: 5em;
+        }
       }
 
       li.current {
@@ -145,23 +149,21 @@ body.clocks {
   #payouts {
 
     ol {
-      //list-style: upper-roman inside;
-
       padding-top: 8px;
 
       li {
         line-height: normal;
-        input { display: none; }
+
+        input {
+          display: inline;
+          width: 5em;
+        }
+
         span.amount { font-size: 1.5em; }
       }
 
       li:first-child {
         span.amount { font-size: 2em; }
-      }
-
-      li.editing {
-        .display, .formula { display: none; }
-        input { display: inline; }
       }
 
       li:first-child ul.actions a.up { display: none; }
