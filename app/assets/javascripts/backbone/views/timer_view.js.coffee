@@ -5,21 +5,25 @@ class Clock.Views.TimerView extends Backbone.View
 
   initialize: =>
     this.el.html(this.template())
+    this.syncTimer(this.model, this.model.get('gameStart'))
+    levelDurationView = new Clock.Views.EditableView({
+      displayElement: this.$('#level_duration_display')
+      inputElement: this.$('#level_duration_input')
+      changeLink: this.$('#level_duration_display a.action')
+      inputText: => this.formatTime(this.model.get('levelDuration') / 1000, false)
+      renderValue: =>
+        text = this.formatTime(this.model.get('levelDuration') / 1000)
+        this.$('#level_duration_display>span').text(text)
+      update: (value) =>
+        matches = value.match(/(\d+)\D*(\d+)?/)
+        if matches?
+          ms = matches[1] * 60000 + (matches[2] || 0) * 1000
+          this.model.set({ levelDuration: ms })
+    })
     this.model.bind('change:gameStart', this.syncTimer)
     this.model.bind('change:gameDuration', this.render)
     this.model.bind('change:levelDuration', this.render)
-    this.syncTimer(this.model, this.model.get('gameStart'))
-    new Clock.Views.EditablePropertyView({
-      el: this.$('#level_duration')
-      model: this.model
-      property: 'levelDuration'
-      adjustInputWidth: true
-      formatInput: (value) => this.formatTime(value / 1000, false)
-      formatOutput: (value) => this.formatTime(value / 1000)
-      processInput: (value) =>
-        matches = value.match(/(\d+)\D*(\d+)?/)
-        matches[1] * 60000 + (matches[2] || 0) * 1000
-    })
+    this.model.bind('change:levelDuration', levelDurationView.render)
 
   events:
     'click #round_time_left': 'toggleTimer'

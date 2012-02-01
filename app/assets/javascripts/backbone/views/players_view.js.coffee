@@ -43,9 +43,9 @@ class Clock.Views.PlayersView extends Backbone.View
     this.collection.bind('reset', this.render)
     this.collection.bind('add', this.render)
     this.collection.bind('remove', this.render)
-    this.model.bind('change:buyin', this.update)
-    this.model.bind('change:rebuy', this.update)
-    this.model.bind('change:addon', this.update)
+    this.model.bind('change:buyin_money', this.update)
+    this.model.bind('change:rebuy_money', this.update)
+    this.model.bind('change:addon_money', this.update)
     this.render()
 
   views: []
@@ -56,10 +56,11 @@ class Clock.Views.PlayersView extends Backbone.View
     _.each(this.views, (view) -> view.render() )
 
   render: =>
+    tbody = this.$('tbody')
     _.each(this.views, (view) -> view.remove())
     this.views = this.collection.map( (player) =>
       view = new Clock.Views.PlayerView({ model: player })
-      this.el.append(view.el)
+      tbody.append(view.el)
       view
     )
     this.update()

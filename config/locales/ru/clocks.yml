@@ -11,10 +11,12 @@ ru:
       click_to_toggle: Кликните, чтобы запустить или остановить таймер
       game_time: время игры
       level_duration: продолжительность раунда
+      level_duration_change: изменить
     info:
       title: Игра
       buyin: бай-ин
       rebuy: ребай
+      change: изменить
       add_rebuys:
         title: Разрешить ребаи
       remove_rebuys:
@@ -61,5 +63,3 @@ ru:
         confirm: Действительно сбросить
         cancel: не надо
         separator: ' или '
-    editable_property:
-      change: изменить

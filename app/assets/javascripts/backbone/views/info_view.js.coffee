@@ -9,24 +9,32 @@ class Clock.Views.InfoView extends Backbone.View
     game = this.model
     players = game.players
     this.el.html(this.template())
-    _.each('buyin_money rebuy_money addon_money'.split(' '), (property) ->
-      new Clock.Views.EditablePropertyView({
-        el: this.$('#' + property)
-        model: game
-        property: property
-        adjustInputWidth: true
-        inputAttributes: { type: 'number', min: 0 }
-        formatOutput: (value) -> I18n.toCurrency(value)
+    _.each('buyin_money rebuy_money addon_money'.split(' '), (property) =>
+      node = this.$('#' + property)
+      new Clock.Views.EditableView({
+        displayElement: node
+        inputElement: node.next('input')
+        changeLink: $('a.change', node)
+        inputText: => game.get(property)
+        renderValue: => $('span', node).text(I18n.toCurrency(game.get(property)))
+        update: (value) =>
+          values = {}
+          values[property] = Number(value)
+          game.set(values)
       })
     )
     _.each('buyin_chips rebuy_chips addon_chips'.split(' '), (property) =>
-      new Clock.Views.EditablePropertyView({
-        el: this.$('#' + property)
-        model: game
-        property: property
-        adjustInputWidth: true
-        inputAttributes: { type: 'number', min: 0 }
-        formatOutput: (value) => this.chipsTemplate({ value: value })
+      node = this.$('#' + property)
+      new Clock.Views.EditableView({
+        displayElement: node
+        inputElement: node.next('input')
+        changeLink: $('a.change', node)
+        inputText: => game.get(property)
+        renderValue: => $('span', node).html(this.chipsTemplate({ value: game.get(property) }))
+        update: (value) =>
+          values = {}
+          values[property] = Number(value)
+          game.set(values)
       })
     )
     game.bind('change:buyin_chips', this.render)

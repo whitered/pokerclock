@@ -2,14 +2,38 @@
 <table class="table">
   <tr>
     <td><%= I18n.t('clocks.info.buyin') %></td>
-    <td><span id="buyin_money" /> &rarr; <span id="buyin_chips" /></td>
+    <td>
+      <span id="buyin_money" class="hoverable">
+        <span class="hoverhighlight" />
+        <a class="hovervisible action change"><%= I18n.t('clocks.info.change') %></a>
+      </span>
+      <input type="number" min="0" />
+      &rarr;
+      <span id="buyin_chips" class="hoverable">
+        <span class="hoverhighlight" />
+        <a class="hovervisible action change"><%= I18n.t('clocks.info.change') %></a>
+      </span>
+      <input type="number" min="0" />
+    </td>
   </tr>
   <tr class="rebuys">
     <td class="hoverable">
       <span class="hoverhighlight"><%= I18n.t('clocks.info.rebuy') %></span>
       <a href="#" class="hovervisible action remove_rebuys" title="<%= I18n.t('clocks.info.remove_rebuys.title') %>">×</a>
     </td>
-    <td><span id="rebuy_money" /> &rarr; <span id="rebuy_chips" /></td>
+    <td>
+      <span id="rebuy_money" class="hoverable">
+        <span class="hoverhighlight" />
+        <a class="hovervisible action change"><%= I18n.t('clocks.info.change') %></a>
+      </span>
+      <input type="number" min="0" />
+      &rarr;
+      <span id="rebuy_chips" class="hoverable">
+        <span class="hoverhighlight" />
+        <a class="hovervisible action change"><%= I18n.t('clocks.info.change') %></a>
+      </span>
+      <input type="number" min="0" />
+    </td>
   </tr>
   <tr class="no-rebuys">
     <td class="hoverable">
@@ -23,7 +47,19 @@
       <span class="hoverhighlight"><%= I18n.t('clocks.info.addon') %></span>
       <a href="#" class="hovervisible action remove_addon" title="<%= I18n.t('clocks.info.remove_addon.title') %>">×</a>
     </td>
-    <td><span id="addon_money" /> &rarr; <span id="addon_chips" /></td>
+    <td>
+      <span id="addon_money" class="hoverable">
+        <span class="hoverhighlight" />
+        <a class="hovervisible action change"><%= I18n.t('clocks.info.change') %></a>
+      </span>
+      <input type="number" min="0" />
+      &rarr;
+      <span id="addon_chips" class="hoverable">
+        <span class="hoverhighlight" />
+        <a class="hovervisible action change"><%= I18n.t('clocks.info.change') %></a>
+      </span>
+      <input type="number" min="0" />
+    </td>
   </tr>
   <tr class="no-addon">
     <td class="hoverable">

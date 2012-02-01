@@ -27,21 +27,6 @@ body.clocks {
     border-radius: 2px;
   }
 
-  .editing .hovervisible { visibility: hidden; }
-
-  .editable {
-    input { display: none; }
-  }
-
-  .editable.editing {
-    input { display: inline; }
-    .display { display: none; }
-  }
-
-  .editable.hover .display {
-    text-decoration: underline;
-  }
-
   ul.actions {
     list-style: none;
     text-align: left;
@@ -85,6 +70,11 @@ body.clocks {
     #game_time {
     }
 
+    #level_duration_input {
+      display: inline;
+      width: 5em;
+    }
+
   }
 
   #info {
@@ -93,7 +83,18 @@ body.clocks {
     table.addon tr.no-addon,
     table.no-addon tr.addon { display: none; }
 
-    table tr td:last-child { text-align: right; }
+    table {
+      tr {
+        td:last-child { text-align: right; }
+
+        td {
+          input {
+            display: inline;
+            width: 3em;
+          }
+        }
+      }
+    }
 
   }
 
@@ -116,7 +117,14 @@ body.clocks {
     >ul {
       list-style: none;
 
-      >li { line-height: 1.2; }
+      >li {
+        line-height: 1.2;
+
+        input {
+          display: inline;
+          width: 5em;
+        }
+      }
 
       li.current {
         .blinds, input { 
@@ -132,36 +140,26 @@ body.clocks {
         }
       }
     }
-
-    .editing .display, .edit {
-      display: none;
-    }
-
-    .editing .edit {
-      display: inline;
-    }
   }
 
   #payouts {
 
     ol {
-      //list-style: upper-roman inside;
-
       padding-top: 8px;
 
       li {
         line-height: normal;
-        input { display: none; }
+
+        input {
+          display: inline;
+          width: 5em;
+        }
+
         span.amount { font-size: 1.5em; }
       }
 
       li:first-child {
         span.amount { font-size: 2em; }
-      }
-
-      li.editing {
-        .display, .formula { display: none; }
-        input { display: inline; }
       }
 
       li:first-child ul.actions a.up { display: none; }

@@ -4,52 +4,47 @@ class Clock.Views.LevelView extends Backbone.View
   template: JST["backbone/templates/level"]
 
   initialize: =>
-    this.model.bind('change', this.handleChange)
-    this.model.bind('destroy', this.handleDestroy)
     this.model.view = this
-    this.render()
+    $(this.el).html(this.template())
+    blindsView = new Clock.Views.EditableView({
+      displayElement: this.$('span.hoverable')
+      inputElement: this.$('input')
+      changeLink: this.$('ul.actions a.change')
+      inputText: => this.model.get('small') + ' / ' + this.model.get('big')
+      renderValue: =>
+        text = this.model.get('small') + ' / ' + this.model.get('big')
+        this.$('span.blinds').text(text)
+      update: (value) =>
+        matches = value.match(/(\d+)\D*(\d+)?/)
+        if matches?
+          this.model.set {
+            small: Number(matches[1])
+            big: Number(matches[2] || (matches[1] * 2))
+          }
+    })
+    this.model.bind('change', blindsView.render)
+    this.model.bind('change', this.handleChange)
+    this.model.bind('destroy', => this.remove() )
 
   handleChange: =>
-    this.render()
     this.highlight()
-
-  handleDestroy: =>
-    this.remove()
+    width = this.$('.blinds').innerWidth()
+    this.$('input').css('width', width)
 
   highlight: =>
     this.$('.blinds').effect('highlight', {}, 1000)
 
   events:
-    'dblclick .blinds': 'edit'
-    'blur .edit input': 'display'
-    'keypress .edit input': 'updateOnEnter'
     'click a.remove' : 'handleRemove'
     'click a.apply' : 'handleApply'
-    'click a.change' : 'edit'
 
   handleRemove: =>
     this.model.destroy()
-    return false
+    false
 
   handleApply: =>
     this.model.trigger('apply', this.model)
-    return false
-
-  edit: =>
-    width = this.$('.blinds').innerWidth()
-    $(this.el).addClass('editing')
-    this.$('.edit input').css('width', width).select()
-
-  updateOnEnter: (e) =>
-    this.display() if(e.keyCode == 13)
-
-  display: =>
-    this.model.parseString(this.$('.edit input').val())
-    $(this.el).removeClass('editing')
-
-  render: =>
-    $(this.el).html(this.template(this.model.toJSON()))
-    return this
+    false
 
 
 
@@ -70,22 +65,21 @@ class Clock.Views.LevelsView extends Backbone.View
     
   handleAdd: (level) =>
     view = new Clock.Views.LevelView({ model: level })
-    element = $(this.el).children[this.model.indexOf(level)]
-    if element?
-      $(element).before(view.el)
+    nextElement = this.el.children[this.model.indexOf(level)]
+    if nextElement?
+      $(nextElement).before(view.el)
     else
-      $(this.el).append(view.el)
+      this.el.append(view.el)
     view.highlight()
     this.updateCurrent()
 
-  addOne: (level) =>
-    view = level.view or new Clock.Views.LevelView({ model: level })
-    $(this.el).append(view.el)
-
   render: =>
-    this.model.each(this.addOne)
+    this.model.each( (level) =>
+      view = level.view or new Clock.Views.LevelView({ model: level })
+      this.el.append(view.el)
+    )
     this.updateCurrent()
-    return this
+    this
 
   syncLevel: (info) =>
     info ?= this.game.currentLevelInfo()

@@ -1,3 +1,9 @@
 <div id="round_time_left" title="<%= I18n.t('clocks.timer.click_to_toggle') %>" />
 <div><%= I18n.t('clocks.timer.game_time') %>: <span id="game_time" /></div>
-<div><%= I18n.t('clocks.timer.level_duration') %>: <span id="level_duration" /></div>
+<div><%= I18n.t('clocks.timer.level_duration') %>:
+  <span id="level_duration_display" class="hoverable">
+    <span class="hoverhighlight" />
+    <a href="#" class="hovervisible action"><%= I18n.t('clocks.timer.level_duration_change') %></a>
+  </span>
+  <input id="level_duration_input" />
+</div>

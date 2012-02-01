@@ -23,13 +23,15 @@ html
         #players.span8
           h4 = t('clocks.players.title')
           table.table
-            tr
-              th.place = t('clocks.players.headers.place')
-              th.name = t('clocks.players.headers.name')
-              th.rebuys = t('clocks.players.headers.rebuy')
-              th.addon = t('clocks.players.headers.addon')
-              th = t('clocks.players.headers.charge')
-              th = t('clocks.players.headers.win')
+            thead
+              tr
+                th.place = t('clocks.players.headers.place')
+                th.name = t('clocks.players.headers.name')
+                th.rebuys = t('clocks.players.headers.rebuy')
+                th.addon = t('clocks.players.headers.addon')
+                th = t('clocks.players.headers.charge')
+                th = t('clocks.players.headers.win')
+            tbody
           = text_field_tag :new_player_name, nil, :placeholder => t('clocks.players.add.placeholder'), :class => 'add', :title => t('clocks.players.add.hint')
     footer
       = link_to t('clocks.footer.reset.name'), '#', :class => 'reset'

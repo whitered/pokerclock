@@ -11,10 +11,12 @@ en:
       click_to_toggle: Click to toggle timer
       game_time: game time
       level_duration: round duration
+      level_duration_change: change
     info:
       title: Game
       buyin: buy-in
       rebuy: rebuy
+      change: change
       add_rebuys:
         title: Allow rebuys
       remove_rebuys:
@@ -61,5 +63,3 @@ en:
         confirm: Really reset
         cancel: cancel
         separator: ' or '
-    editable_property:
-      change: change

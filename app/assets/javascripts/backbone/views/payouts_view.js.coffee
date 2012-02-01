@@ -3,37 +3,32 @@ class Clock.Views.PayoutView extends Backbone.View
 
   template: JST['backbone/templates/payout']
 
+  initialize: =>
+    this.model.bind('change', this.render)
+    this.el.id = this.model.cid
+    $(this.el).html(this.template())
+    new Clock.Views.EditableView({
+      displayElement: this.$('.display')
+      inputElement: this.$('input')
+      changeLink: this.$('ul.actions a.change')
+      inputText: => this.model.formula()
+      update: (value) => this.model.parseString(value)
+      renderValue: =>
+        value = I18n.toCurrency(this.model.value(this.options.bank))
+        formula = this.model.formula()
+        percentage = this.model.get('percentage')
+        this.$('span.amount').text(value).attr('title', formula)
+        this.$('span.formula').text(if percentage then '(' + formula + ')' else '' )
+    })
+
   events:
-    'dblclick' : 'edit'
-    'blur input' : 'update'
-    'keypress input' : 'updateOnEnter'
-    'click a.change' : 'edit'
     'click a.remove' : 'destroy'
     'click a.up' : 'moveUp'
     'click a.down' : 'moveDown'
 
-  initialize: =>
-    this.model.bind('change', this.render)
-    this.el.id = this.model.cid
-
-  edit: =>
-    width = this.$('.display').innerWidth()
-    $(this.el).addClass('editing')
-    this.$('input').css('width', width).select()
-    false
-
-  update: =>
-    input = this.$('input')
-    $(this.el).removeClass('editing')
-    this.model.parseString(input.val())
-    input.val(this.model.formula())
-
   destroy: =>
     this.model.destroy()
     false
-
-  updateOnEnter: (event) =>
-    this.update() if event.keyCode == 13
 
   moveUp: =>
     this.model.collection.moveUp(this.model)
@@ -42,15 +37,6 @@ class Clock.Views.PayoutView extends Backbone.View
   moveDown: =>
     this.model.collection.moveDown(this.model)
     false
-
-  render: =>
-    values = {
-      value: I18n.toCurrency(this.model.value(this.options.bank))
-      formula: this.model.formula()
-      percentage: this.model.get('percentage')
-    }
-    $(this.el).html(this.template(values))
-    this
 
 
 
@@ -64,8 +50,8 @@ class Clock.Views.PayoutsView extends Backbone.View
       axis: 'y'
       update: this.handleSort
     })
-    this.el.mousedown( =>
-      document.activeElement.blur() if document.activeElement.nodeName == 'INPUT'
+    this.el.mousedown( (event) =>
+      document.activeElement.blur() if document.activeElement.nodeName == 'INPUT' && document.activeElement != event.target
     )
     this.model.bind('add', this.render)
     this.model.bind('remove', this.render)

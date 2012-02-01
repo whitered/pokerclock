@@ -4,10 +4,6 @@ class Clock.Models.Level extends Backbone.Model
     big: 50
     duration: null
 
-  parseString: (value) =>
-    matches = value.match(/(\d+)\D*(\d+)?/)
-    this.set({ small: Number(matches[1]), big: Number(matches[2] || (matches[1] * 2)) }) if matches?
-
 
 
 class Clock.Collections.LevelsCollection extends Backbone.Collection
@@ -21,14 +17,14 @@ class Clock.Collections.LevelsCollection extends Backbone.Collection
     this.fetch()
 
   handleChange: (level) =>
-    this.sort()
     level.save()
+    this.sort()
 
   handleAdd: (level) =>
     level.save()
 
   comparator: (level) =>
-    return level.get('small')
+    level.get('small')
 
   addNextLevel: =>
     last = this.last()
