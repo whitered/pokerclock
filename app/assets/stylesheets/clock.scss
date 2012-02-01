@@ -27,21 +27,6 @@ body.clocks {
     border-radius: 2px;
   }
 
-  .editing .hovervisible { visibility: hidden; }
-
-  .editable {
-    input { display: none; }
-  }
-
-  .editable.editing {
-    input { display: inline; }
-    .display { display: none; }
-  }
-
-  .editable.hover .display {
-    text-decoration: underline;
-  }
-
   ul.actions {
     list-style: none;
     text-align: left;
