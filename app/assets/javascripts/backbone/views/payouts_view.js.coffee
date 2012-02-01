@@ -55,6 +55,7 @@ class Clock.Views.PayoutsView extends Backbone.View
     )
     this.model.bind('add', this.render)
     this.model.bind('remove', this.render)
+    this.model.bind('reset', this.render)
     players = this.game.players
     players.bind('add', this.render)
     players.bind('remove', this.render)
