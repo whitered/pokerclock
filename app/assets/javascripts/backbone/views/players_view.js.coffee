@@ -56,10 +56,11 @@ class Clock.Views.PlayersView extends Backbone.View
     _.each(this.views, (view) -> view.render() )
 
   render: =>
+    tbody = this.$('tbody')
     _.each(this.views, (view) -> view.remove())
     this.views = this.collection.map( (player) =>
       view = new Clock.Views.PlayerView({ model: player })
-      this.el.append(view.el)
+      tbody.append(view.el)
       view
     )
     this.update()
