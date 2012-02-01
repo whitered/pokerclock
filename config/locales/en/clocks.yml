@@ -16,6 +16,7 @@ en:
       title: Game
       buyin: buy-in
       rebuy: rebuy
+      change: change
       add_rebuys:
         title: Allow rebuys
       remove_rebuys:

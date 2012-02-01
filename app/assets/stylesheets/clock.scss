@@ -98,7 +98,18 @@ body.clocks {
     table.addon tr.no-addon,
     table.no-addon tr.addon { display: none; }
 
-    table tr td:last-child { text-align: right; }
+    table {
+      tr {
+        td:last-child { text-align: right; }
+
+        td {
+          input {
+            display: inline;
+            width: 3em;
+          }
+        }
+      }
+    }
 
   }
 
