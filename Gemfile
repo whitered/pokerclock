@@ -24,6 +24,8 @@ gem 'rails-backbone'
 gem 'slim-rails'
 gem 'i18n-js'
 
+gem 'heroku'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
