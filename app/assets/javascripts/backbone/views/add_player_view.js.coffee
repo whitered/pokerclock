@@ -6,6 +6,6 @@ class Clock.Views.AddPlayerView extends Backbone.View
 
   handleKeyPress: (event) =>
     return if event.keyCode != 13
-    this.model.add({ name: this.el.val() })
+    this.model.add({ name: _.escape(this.el.val()) })
     this.el.focus()
     this.el.val('')
