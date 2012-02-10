@@ -10,4 +10,4 @@ class Clock.Views.AddPayoutView extends Backbone.View
     if payout.parseString(this.el.val())
       this.model.add(payout)
       this.el.focus()
-      this.el.val('')
+    this.el.val('')
