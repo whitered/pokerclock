@@ -11,14 +11,14 @@ html
       #firstrow.row
         #timer.span6
         #levels.span6
-          ul
+          ul.form-inline
           = link_to t('clocks.levels.add'), nil, :class => 'add'
       .row
         .span4
           #info
           #payouts
             h4 = t('clocks.payouts.title')
-            ol
+            ol.form-inline
             = text_field_tag :new_payout, nil, :placeholder => t('clocks.payouts.add.placeholder'), :class => 'add', :title => t('clocks.payouts.add.hint')
         #players.span8
           h4 = t('clocks.players.title')
