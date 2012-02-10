@@ -11,7 +11,7 @@ class Clock.Views.InfoView extends Backbone.View
     this.el.html(this.template())
     _.each('buyin_money rebuy_money addon_money'.split(' '), (property) =>
       node = this.$('#' + property)
-      new Clock.Views.EditableView({
+      view = new Clock.Views.EditableView({
         displayElement: node
         inputElement: node.next('input')
         changeLink: $('a.change', node)
@@ -22,10 +22,11 @@ class Clock.Views.InfoView extends Backbone.View
           values[property] = Number(value)
           game.set(values)
       })
+      game.bind('change:' + property, view.render)
     )
     _.each('buyin_chips rebuy_chips addon_chips'.split(' '), (property) =>
       node = this.$('#' + property)
-      new Clock.Views.EditableView({
+      view = new Clock.Views.EditableView({
         displayElement: node
         inputElement: node.next('input')
         changeLink: $('a.change', node)
@@ -36,10 +37,8 @@ class Clock.Views.InfoView extends Backbone.View
           values[property] = Number(value)
           game.set(values)
       })
+      game.bind('change:' + property, view.render)
     )
-    game.bind('change:buyin_chips', this.render)
-    game.bind('change:rebuy_chips', this.render)
-    game.bind('change:addon_chips', this.render)
     game.bind('change:rebuy', this.handleChangeMode)
     game.bind('change:addon', this.handleChangeMode)
     players.bind('add', this.render)
