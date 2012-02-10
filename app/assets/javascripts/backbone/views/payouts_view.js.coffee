@@ -4,10 +4,9 @@ class Clock.Views.PayoutView extends Backbone.View
   template: JST['backbone/templates/payout']
 
   initialize: =>
-    this.model.bind('change', this.render)
     this.el.id = this.model.cid
     $(this.el).html(this.template())
-    new Clock.Views.EditableView({
+    view = new Clock.Views.EditableView({
       displayElement: this.$('.display')
       inputElement: this.$('input')
       changeLink: this.$('ul.actions a.change')
@@ -20,6 +19,7 @@ class Clock.Views.PayoutView extends Backbone.View
         this.$('span.amount').text(value).attr('title', formula)
         this.$('span.formula').text(if percentage then '(' + formula + ')' else '' )
     })
+    this.model.bind('change', view.render)
 
   events:
     'click a.remove' : 'destroy'
