@@ -36,9 +36,5 @@ html
     footer
       = link_to t('clocks.footer.reset.name'), '#', :class => 'reset'
     / Javascript at the bottom for fast page loading
-    javascript:
-      function initializeLocale(){
-        I18n.locale = "#{I18n.locale}";
-      }
     = javascript_include_tag "locales/#{I18n.locale}"
     = javascript_include_tag 'clock'

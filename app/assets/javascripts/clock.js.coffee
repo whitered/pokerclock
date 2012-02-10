@@ -3,8 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #= require backbone/main
 
-initializeLocale()
-
+I18n.locale = $('body').attr('lang')
 game = new Clock.Models.Game({ id: 1 })
 game.fetch({
   error: =>

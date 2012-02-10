@@ -1,7 +1,4 @@
 == fix ==
-  get locale from body@lang
-
-
 
 == feature ==
   edit and delete players
