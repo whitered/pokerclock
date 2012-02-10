@@ -1,7 +1,18 @@
-dark style
-social buttons
-ante
-language selector
-end of rounds
-time breaks
-custom round durations
+== fix ==
+  get locale from body@lang
+
+
+
+== feature ==
+  edit and delete players
+  edit game time
+  dark style
+  social buttons
+  ante
+  language selector
+  end of rounds
+  time breaks
+  custom round durations
+  currencies
+  misc sounds, sound selector, sound turned off by default on ios
+  tournament title
