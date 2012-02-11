@@ -4,6 +4,11 @@
 #= require backbone/main
 
 I18n.locale = $('body').attr('lang')
+I18n.fallbacks = true
+
+# https://github.com/fnando/i18n-js/issues/80
+I18n.translations[I18n.locale] or= {}
+
 game = new Clock.Models.Game({ id: 1 })
 game.fetch({
   error: =>

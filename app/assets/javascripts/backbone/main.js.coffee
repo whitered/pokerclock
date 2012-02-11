@@ -3,7 +3,8 @@
 #= require ./jquery.timers-1.2
 #= require ./jquery.inline-confirmation
 #= require ./jquery-ui.min
-#= require ./i18n
+#= require i18n
+#= require ./translations
 #= require underscore
 #= require backbone
 #= require backbone_rails_sync
