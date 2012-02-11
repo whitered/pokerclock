@@ -33,11 +33,17 @@ html
                 th = t('clocks.players.headers.win')
             tbody
           = text_field_tag :new_player_name, nil, :placeholder => t('clocks.players.add.placeholder'), :class => 'add', :title => t('clocks.players.add.hint')
-    footer
-      p
-        = link_to t('clocks.footer.reset.name'), '#', :class => 'reset btn btn-primary'
-      p
-        = link_to 'pokerclockinfo@gmail.com', 'mailto:pokerclockinfo@gmail.com'
+    footer.container
+      hr
+      .row
+        .span4.left
+          = link_to_unless I18n.locale == :en, 'English', '/'
+          '  |
+          = link_to_unless I18n.locale == :ru, 'Russian', '/?lang=ru'
+        .span4.center
+          = link_to t('clocks.footer.reset.name'), '#', :class => 'reset btn btn-primary'
+        .span4.right
+          = link_to 'pokerclockinfo@gmail.com', 'mailto:pokerclockinfo@gmail.com'
     / Javascript at the bottom for fast page loading
     = javascript_include_tag "locales/#{I18n.locale}"
     = javascript_include_tag 'clock'
