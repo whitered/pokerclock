@@ -43,6 +43,9 @@ html
         .span4.center
           = link_to t('clocks.footer.reset.name'), '#', :class => 'reset btn btn-primary'
         .span4.right
-          = link_to 'pokerclockinfo@gmail.com', 'mailto:pokerclockinfo@gmail.com'
+          a.addthis_button addthis:title=t('clocks.share.title') addthis:description=t('clocks.share.description')
+          br
+          = link_to 'pokerclockinfo@gmail.com', 'mailto:pokerclockinfo@gmail.com', :title => I18n.t('clocks.footer.email_title')
     / Javascript at the bottom for fast page loading
     = javascript_include_tag 'clock'
+    = javascript_include_tag 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f35770c3bb44c5a'

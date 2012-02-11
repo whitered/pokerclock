@@ -29,3 +29,9 @@ playersView = new Clock.Views.PlayersView({ model: game })
 addPlayerView = new Clock.Views.AddPlayerView({ model: game.players })
 undoView = new Clock.Views.UndoView({ model: window.undoManager })
 footerView = new Clock.Views.FooterView({ model: game })
+
+window.addthis_config = {
+  ui_language: I18n.locale
+  ui_click: true
+  data_track_clickback: false
+}

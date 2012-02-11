@@ -55,7 +55,7 @@ en:
       up_hint: Move up
       down_hint: Move down
       add:
-        placeholder: Add payout place
+        placeholder: Add payout
         hint: Enter the payout value and press <Enter>. Use "%" symbol to specify percentage
     footer:
       reset:
@@ -63,3 +63,7 @@ en:
         confirm: Really reset
         cancel: cancel
         separator: ' or '
+      email_title: Send a bugreport, feature request, question, note etc.
+    share:
+      title: Advanced Poker Clock
+      description: Fully customizable free poker tournament manager, which works on all the platforms and doesn't require any plugins or installation. Most complete statistics for rounds, blinds, chips, players and prizes.
