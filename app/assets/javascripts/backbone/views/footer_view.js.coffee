@@ -3,8 +3,8 @@ class Clock.Views.FooterView extends Backbone.View
 
   initialize: =>
     this.$('a.reset').inlineConfirmation(
-      confirm: "<a href='#'>#{ I18n.t('clocks.footer.reset.confirm') }</a>"
-      cancel: "<a href='#'>#{ I18n.t('clocks.footer.reset.cancel') }</a>"
+      confirm: "<a href='#' class='btn btn-danger'>#{ I18n.t('clocks.footer.reset.confirm') }</a>"
+      cancel: "<a href='#' class='btn'>#{ I18n.t('clocks.footer.reset.cancel') }</a>"
       separator: I18n.t('clocks.footer.reset.separator')
       expiresIn: 5
       confirmCallback: this.reset
@@ -12,4 +12,4 @@ class Clock.Views.FooterView extends Backbone.View
 
   reset: =>
     this.model.reset()
-    return false
+    false

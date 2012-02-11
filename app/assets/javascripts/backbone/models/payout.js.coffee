@@ -18,11 +18,13 @@ class Clock.Models.Payout extends Backbone.Model
 
   parseString: (str) =>
     md = str.match /(\d+)\s*(%?)/
-    if md
+    if md?
       rate = Number(md[1])
       percentage = md[2].length == 1
       this.set({ rate: rate, percentage: percentage })
-    return md?
+      true
+    else
+      false
 
 
 

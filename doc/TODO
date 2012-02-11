@@ -1,5 +1,5 @@
 == fix ==
-  check wrong data types
+  
 
 == feature ==
   edit and delete players
@@ -14,3 +14,4 @@
   currencies
   misc sounds, sound selector, sound turned off by default on ios
   tournament title
+  undo with ctrl-z
