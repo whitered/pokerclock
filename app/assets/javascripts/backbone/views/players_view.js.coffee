@@ -10,7 +10,7 @@ class Clock.Views.PlayerView extends Backbone.View
   events:
     'click a.rebuy' : 'handleRebuy'
     'click a.addon' : 'handleAddon'
-    'click a.sitout' : 'handleSitout'
+    'click a.bustout' : 'handleBustout'
 
   handleRebuy: =>
     num = this.model.get('rebuys')
@@ -21,8 +21,8 @@ class Clock.Views.PlayerView extends Backbone.View
     this.model.set({ addon: true })
     false
 
-  handleSitout: =>
-    this.model.trigger('sitout', this.model)
+  handleBustout: =>
+    this.model.trigger('bustout', this.model)
     false
 
   render: =>

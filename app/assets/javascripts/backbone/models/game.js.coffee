@@ -25,7 +25,7 @@ class Clock.Models.Game extends Backbone.Model
     this.payouts = new Clock.Collections.PayoutsCollection
 
     this.bind('change', this.handleChange)
-    this.players.bind('sitout', this.handleSitout)
+    this.players.bind('bustout', this.handleBustout)
     this.levels.bind('apply', this.applyLevel)
     this.payouts.bind('change', this.recalculatePayouts)
     this.payouts.bind('add', this.recalculatePayouts)
@@ -42,10 +42,10 @@ class Clock.Models.Game extends Backbone.Model
     this.save()
 
 
-  handleSitout: (player) =>
+  handleBustout: (player) =>
     positionOut = this.players.length - this.activePlayers().length
     player.set({ positionOut: positionOut })
-    window.undoManager.add(player, player.set, { positionOut: null }, I18n.t('clocks.action.sitout', player:  player.get('name')))
+    window.undoManager.add(player, player.set, { positionOut: null }, I18n.t('clocks.action.bustout', player:  player.get('name')))
 
 
   applyLevel: (level) =>

@@ -4,7 +4,7 @@ ru:
     undo: отменить
     action:
       new_player: 'Новый игрок: %{name}'
-      sitout: '%{player} вылетел'
+      bustout: '%{player} вылетел'
       rebuy: 'Ребай: %{player}'
       addon: 'Адд-он: %{player}'
     timer:
@@ -37,7 +37,7 @@ ru:
       change: изменить
     players:
       title: Игроки
-      sitout: вылетел
+      bustout: вылетел
       headers:
         place: место
         name: имя

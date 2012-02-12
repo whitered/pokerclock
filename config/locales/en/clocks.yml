@@ -4,7 +4,7 @@ en:
     undo: Undo
     action:
       new_player: 'New player: %{name}'
-      sitout: 'Sit out: %{player}'
+      bustout: 'Bust out: %{player}'
       rebuy: 'Rebuy: %{player}'
       addon: 'Add-on: %{player}'
     timer:
@@ -37,7 +37,7 @@ en:
       change: change
     players:
       title: Players
-      sitout: sit out
+      bustout: bust out
       headers:
         place: place
         name: name
