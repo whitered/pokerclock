@@ -1,20 +1,23 @@
 class Clock.Models.UndoManager extends Backbone.Model
   defaults:
-    object: null
-    method: null
-    params: null
+    action: null
     message: null
 
   add: (object, method, params, message) =>
     params = [params] unless params == null || params is Array
-    this.set({ 
-      object: object
-      method: method
-      params: params
+    this.set {
+      action: -> method.apply(object, params)
       message: message
-    })
+    }
+
+
+  addAction: (message, action) =>
+    this.set {
+      action: action
+      message: message
+    }
 
   undo: =>
-    this.get('method').apply(this.get('object'), this.get('params'))
+    this.get('action').apply(null)
     this.clear()
   
