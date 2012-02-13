@@ -14,7 +14,7 @@ class Clock.Views.UndoView extends Backbone.View
     false
 
   render: =>
-    if this.model.get('method')
+    if this.model.get('message')
       this.el.html(this.template({ message: this.model.get('message') }))
       alert = this.$('.alert').first()
       alert.alert()
