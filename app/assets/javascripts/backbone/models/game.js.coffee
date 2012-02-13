@@ -43,8 +43,10 @@ class Clock.Models.Game extends Backbone.Model
 
 
   handleBustout: (player) =>
-    positionOut = this.players.length - this.activePlayers().length
+    numActivePlayers = this.activePlayers().length
+    positionOut = this.players.length - numActivePlayers
     player.set({ positionOut: positionOut })
+    this.handleBustout(this.players.at(0)) if numActivePlayers == 2
     window.undoManager.add(player, player.set, { positionOut: null }, I18n.t('clocks.action.bustout', player:  player.get('name')))
 
 
