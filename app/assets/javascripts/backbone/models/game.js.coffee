@@ -4,6 +4,7 @@ class Clock.Models.Game extends Backbone.Model
 
 
   defaults:
+    title: null
     levelDuration: 20 * 60 * 1000
     gameStart: null
     gameDuration: 0

@@ -7,7 +7,14 @@ html
     = analytics_init if Rails.env.production? && GoogleAnalytics.valid_tracker?
   body lang=I18n.locale.to_s class=controller.controller_name 
     .container
-      #undo.row
+      header.row
+        .span12
+          .hoverable
+            h1.hoverhighlight title=I18n.t('clocks.header.hint')
+            a.action.hovervisible.edit = t('clocks.header.edit')
+          input type='text'
+      .row
+        #undo.span12
       #firstrow.row
         #timer.span6
         #levels.span6

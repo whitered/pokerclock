@@ -9,8 +9,13 @@ $actionsBorder: lightgray;
 $actionsShadow: #999;
 
 body.clocks {
+  header {
+    h1 { display: inline; }
+    input { width: 100%; }
+  }
 
   background-image: url('background.png');
+
 
   #firstrow {
     margin-top: 3em;

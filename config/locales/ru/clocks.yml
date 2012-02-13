@@ -1,7 +1,14 @@
 # encoding: utf-8
 ru:
   clocks:
+    game:
+      generic_title:
+        base: No-limit Hold'em турнир {{buyin}}
+        rebuys: ' с ребаями'
     undo: отменить
+    header:
+      edit: редактировать
+      hint: Название игры будет сформировано автоматически, если оставить его пустым
     action:
       new_player: 'Новый игрок: %{name}'
       bustout: '%{player} вылетел'

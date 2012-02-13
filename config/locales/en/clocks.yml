@@ -1,7 +1,14 @@
 # encoding: utf-8
 en:
   clocks:
+    game:
+      generic_title:
+        base: No-limit Hold'em tournament {{buyin}}
+        rebuys: ' with rebuys'
     undo: Undo
+    header:
+      edit: edit
+      hint: Event title will be constructed automatically only if it's blank
     action:
       new_player: 'New player: %{name}'
       bustout: 'Bust out: %{player}'
