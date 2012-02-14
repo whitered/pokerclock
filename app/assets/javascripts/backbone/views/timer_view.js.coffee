@@ -10,14 +10,22 @@ class Clock.Views.TimerView extends Backbone.View
       displayElement: this.$('#level_duration_display')
       inputElement: this.$('#level_duration_input')
       changeLink: this.$('#level_duration_display a.action')
-      inputText: => this.formatTime(this.model.get('levelDuration') / 1000, false)
+      inputText: => this.formatTime(this.model.get('levelDuration') / 1000)
       renderValue: =>
         text = this.formatTime(this.model.get('levelDuration') / 1000)
         this.$('#level_duration_display>span').text(text)
       update: (value) =>
-        matches = value.match(/(\d+)\D*(\d+)?/)
+        matches = value.match(/(\d+)(\D+(\d+))?(\D+(\d+))?/)
         if matches?
-          ms = matches[1] * 60000 + (matches[2] || 0) * 1000
+          if matches[5]?
+            h = Number(matches[1])
+            m = Number(matches[3])
+            s = Number(matches[5])
+          else
+            h = 0
+            m = Number(matches[1])
+            s = Number(matches[3]) || 0
+          ms = (h * 60 * 60 + m * 60 + s) * 1000
           this.model.set({ levelDuration: ms })
     })
     this.model.bind('change:gameStart', this.syncTimer)
@@ -39,15 +47,12 @@ class Clock.Views.TimerView extends Backbone.View
   toggleTimer: =>
     this.model.toggleTimer()
 
-  formatTime: (seconds, withHours = true) =>
+  formatTime: (seconds) =>
     s = seconds || 0
     negative = s < 0
     s = -s if negative
-    if withHours
-      h = Math.floor(s / 3600)
-      s = s % 3600
-    else
-      h = 0
+    h = Math.floor(s / 3600)
+    s = s % 3600
     m = Math.floor(s / 60)
     s = s % 60
     m = '0' + m if m < 10
