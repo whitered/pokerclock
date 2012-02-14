@@ -26,9 +26,13 @@ class Clock.Views.PlayersControlsView extends Backbone.View
     else
       player = this.model.getByCid(cid)
       player.destroy()
+    this.$('.btn-group').removeClass('open')
     false
 
   render: =>
+    btn = this.$('a.btn')
+    btn.toggleClass('btn-disabled', this.model.length == 0)
+    btn.attr('disabled', if this.model.length == 0 then 'disabled' else null)
     ul = this.$('ul')
     ul.empty()
     this.model.each( (player) =>
