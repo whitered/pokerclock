@@ -10,16 +10,20 @@ class Clock.Views.LevelView extends Backbone.View
       displayElement: this.$('span.hoverable')
       inputElement: this.$('input')
       changeLink: this.$('ul.actions a.change')
-      inputText: => this.model.get('small') + ' / ' + this.model.get('big')
+      inputText: => this.model.get('small') + '/' + this.model.get('big') + '/' + this.model.get('ante')
       renderValue: =>
         text = this.model.get('small') + ' / ' + this.model.get('big')
+        ante = this.model.get('ante')
         this.$('span.blinds').text(text)
+        this.$('span.ante').text(if ante > 0 then ' / ' + ante else '')
+        this.$('div.ante').text(if ante > 0 then I18n.t('clocks.levels.ante') + ' ' + ante else '')
       update: (value) =>
-        matches = value.match(/(\d+)\D*(\d+)?/)
+        matches = value.match(/(\d+)\D*(\d+)?(\D*(\d+))?/)
         if matches?
           this.model.set {
             small: Number(matches[1])
-            big: Number(matches[2] || (matches[1] * 2))
+            big: Number(matches[2] or (matches[1] * 2))
+            ante: Number(matches[4] or 0)
           }
     })
     this.model.bind('change', blindsView.render)
@@ -28,8 +32,6 @@ class Clock.Views.LevelView extends Backbone.View
 
   handleChange: =>
     this.highlight()
-    width = this.$('.blinds').innerWidth()
-    this.$('input').css('width', width)
 
   highlight: =>
     this.$('.blinds').effect('highlight', {}, 1000)
