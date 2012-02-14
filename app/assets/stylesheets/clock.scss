@@ -113,6 +113,12 @@ body.clocks {
     table.no-rebuys .rebuys,
     table.no-addon .addon { display: none; }
 
+    .controls {
+      .btn-group {
+        float: right;
+      }
+    }
+
   }
 
   #levels {
