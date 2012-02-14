@@ -2,16 +2,13 @@
   
 
 == feature ==
-  edit and delete players
+  visual effect on timer toggle
   edit game time
   dark style
-  social buttons
-  ante
-  language selector
   end of rounds
   time breaks
   custom round durations
   currencies
   misc sounds, sound selector, sound turned off by default on ios
-  tournament title
   undo with ctrl-z
+  hide all controls until mouse move
