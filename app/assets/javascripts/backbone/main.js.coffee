@@ -10,7 +10,8 @@
 #= require backbone_rails_sync
 #= require backbone_datalink
 #= require ./backbone.localStorage
-#= require ./bootstrap-alert
+#= require twitter/bootstrap/bootstrap-alert
+#= require twitter/bootstrap/bootstrap-dropdown
 #= require_self
 #= require_tree ./templates
 #= require_tree ./models
