@@ -40,5 +40,5 @@ class Clock.Views.PlayersControlsView extends Backbone.View
     )
     if this.model.length > 1
       ul.append("<li class='divider' />")
-      ul.append("<li><a href='#' data-playerid='all'>All</a></li>")
+      ul.append("<li><a href='#' data-playerid='all'>#{I18n.t('clocks.players.remove.all')}</a></li>")
     this
