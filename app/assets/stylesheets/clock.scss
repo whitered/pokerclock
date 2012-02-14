@@ -120,27 +120,49 @@ body.clocks {
     text-align: right;
 
     >ul {
+
       list-style: none;
 
       >li {
-        line-height: 1.2;
 
-        input {
-          width: 5em;
-        }
+        line-height: 1.2;
+        margin-top: 0.5em;
+        color: #999;
+
+        input { width: 7em; }
+
+        div.ante { display: none; }
       }
 
       li.current {
+
+        color: #333;
+
         .blinds, input { 
           font-size: 5em;
           height: auto;
         }
+
+        span.ante { display: none; }
+
+        div.ante {
+          display: block;
+          font-size: 2.5em;
+          margin-top: -0.5em;
+          margin-bottom: 0.5em;
+        }
       }
 
       li.next {
+
+        @extend li.current;
+
         .blinds, input {
           font-size: 3em;
-          height: auto;
+        }
+
+        div.ante {
+          font-size: 1.5em;
         }
       }
     }

@@ -42,6 +42,7 @@ en:
       remove: remove
       apply: start
       change: change
+      ante: ante
     players:
       title: Players
       bustout: bust out

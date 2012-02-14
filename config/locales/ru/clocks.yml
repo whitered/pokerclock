@@ -42,6 +42,7 @@ ru:
       remove: убрать
       apply: начать
       change: изменить
+      ante: анте
     players:
       title: Игроки
       bustout: вылетел
