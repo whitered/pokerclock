@@ -22,7 +22,7 @@ class Clock.Views.PlayersControlsView extends Backbone.View
   handleDeletePlayerClick: (event) =>
     cid = event.target.getAttribute('data-playerid')
     if cid == 'all'
-      this.model.reset()
+      this.model.destroyAll()
     else
       player = this.model.getByCid(cid)
       player.destroy()
@@ -38,4 +38,3 @@ class Clock.Views.PlayersControlsView extends Backbone.View
       ul.append("<li class='divider' />")
       ul.append("<li><a href='#' data-playerid='all'>All</a></li>")
     this
-

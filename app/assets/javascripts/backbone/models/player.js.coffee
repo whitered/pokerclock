@@ -55,6 +55,7 @@ class Clock.Collections.PlayersCollection extends Backbone.Collection
   initialize: =>
     this.bind('change', this.handleChange)
     this.bind('add', this.handleAdd)
+    this.bind('remove', this.handleRemove)
     this.fetch()
 
   handleChange: (player) =>
@@ -65,6 +66,18 @@ class Clock.Collections.PlayersCollection extends Backbone.Collection
     player.set({ positionIn: this.length - 1 })
     player.save()
     window.undoManager.add(player, player.destroy, null, I18n.t('clocks.action.new_player', { name: player.get('name') }))
+
+  handleRemove: (player) =>
+    positionOut = player.get('positionOut')
+    if positionOut?
+      this.each( (p) ->
+        pOut = p.get('positionOut')
+        p.set({ positionOut: pOut - 1 }) if pOut? and pOut > positionOut
+      )
+    # we should also fix positionIn values but we won't since they don't affect anything
+
+  destroyAll: =>
+    this.at(0).destroy() while this.length > 0
 
   comparator: (player) =>
     if player.get('positionOut')?
