@@ -8,7 +8,7 @@ en:
     undo: Undo
     header:
       edit: edit
-      hint: Event title will be constructed automatically only if it's blank
+      hint: Event title will be constructed automatically only if it's set to blank
     action:
       new_player: 'New player: %{name}'
       bustout: 'Bust out: %{player}'
