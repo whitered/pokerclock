@@ -39,7 +39,13 @@ html
                 th = t('clocks.players.headers.charge')
                 th = t('clocks.players.headers.win')
             tbody
-          = text_field_tag :new_player_name, nil, :placeholder => t('clocks.players.add.placeholder'), :class => 'add', :title => t('clocks.players.add.hint')
+          .controls
+            input.add type='text' id='new_player_name' placeholder=t('clocks.players.add.placeholder') title=t('clocks.players.add.hint')
+            .btn-group
+              a.btn.dropdown-toggle data-toggle="dropdown"
+                =' I18n.t('clocks.players.remove.button')
+                span.caret
+              ul.dropdown-menu
     footer.container
       hr
       .row
