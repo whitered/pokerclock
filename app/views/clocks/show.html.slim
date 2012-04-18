@@ -19,14 +19,14 @@ html
         #timer.span6
         #levels.span6
           ul.form-inline
-          = link_to t('clocks.levels.add'), nil, :class => 'add'
+          = link_to t('clocks.levels.add'), nil, :class => 'add irksome'
       .row
         .span4
           #info
           #payouts
             h4 = t('clocks.payouts.title')
             ol.form-inline
-            = text_field_tag :new_payout, nil, :placeholder => t('clocks.payouts.add.placeholder'), :class => 'add', :title => t('clocks.payouts.add.hint')
+            = text_field_tag :new_payout, nil, :placeholder => t('clocks.payouts.add.placeholder'), :class => 'add irksome', :title => t('clocks.payouts.add.hint')
         #players.span8
           h4 = t('clocks.players.title')
           table.table
@@ -39,14 +39,14 @@ html
                 th = t('clocks.players.headers.charge')
                 th = t('clocks.players.headers.win')
             tbody
-          .controls
+          .controls.irksome
             input.add type='text' id='new_player_name' placeholder=t('clocks.players.add.placeholder') title=t('clocks.players.add.hint')
             .btn-group
               a.btn.dropdown-toggle data-toggle="dropdown"
                 =' I18n.t('clocks.players.remove.button')
                 span.caret
               ul.dropdown-menu
-    footer.container
+    footer.container.irksome
       hr
       .row
         .span4.left

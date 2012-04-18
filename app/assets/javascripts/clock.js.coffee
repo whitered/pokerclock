@@ -30,6 +30,7 @@ playersControlsView = new Clock.Views.PlayersControlsView { model: game.players 
 undoView = new Clock.Views.UndoView { model: window.undoManager }
 headerView = new Clock.Views.HeaderView { model: game }
 footerView = new Clock.Views.FooterView { model: game }
+irksomeView = new Clock.Views.IrksomeControlsView
 
 window.addthis_config = {
   ui_language: I18n.locale
