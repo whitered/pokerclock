@@ -52,12 +52,7 @@ html
         .span4.left
           = link_to 'pokerclockinfo@gmail.com', 'mailto:pokerclockinfo@gmail.com', :title => I18n.t('clocks.footer.email_title')
           br
-          .addthis_toolbox.addthis_default_style addthis:title=t('clocks.share.title') addthis:description=t('clocks.share.description')
-            a.addthis_button_preferred_1
-            a.addthis_button_preferred_2
-            a.addthis_button_preferred_3
-            a.addthis_button_compact
-            a.addthis_counter.addthis_bubble_style
+          = render 'shared/share_buttons' if Rails.configuration.addthis_profile_id
         .span4.center
           = link_to t('clocks.footer.reset.name'), '#', :class => 'reset btn btn-primary'
         .span4.right
@@ -66,4 +61,3 @@ html
           = link_to_unless I18n.locale == :ru, 'Russian', '/?lang=ru'
     / Javascript at the bottom for fast page loading
     = javascript_include_tag 'clock'
-    = javascript_include_tag 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f35770c3bb44c5a'
