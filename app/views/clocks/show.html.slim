@@ -59,5 +59,7 @@ html
           = link_to_unless I18n.locale == :en, 'English', '/'
           '  |
           = link_to_unless I18n.locale == :ru, 'Russian', '/?lang=ru'
+          '  |
+          = link_to_unless I18n.locale == :it, 'Italian', '/?lang=it'
     / Javascript at the bottom for fast page loading
     = javascript_include_tag 'clock'

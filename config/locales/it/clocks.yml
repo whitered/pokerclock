@@ -1,0 +1,81 @@
+# encoding: utf-8
+it:
+  clocks:
+    game:
+      generic_title:
+        base: Torneo No-limit Hold'em {{buyin}}
+        rebuys: ' con rebuys'
+    undo: Undo
+    header:
+      edit: modifica
+      hint: Il titolo dell'evento verrà composto automaticamente solo se lasciato bianco
+    action:
+      new_player: 'Nuovo giocatore: %{name}'
+      bustout: 'Eliminato: %{player}'
+      rebuy: 'Rebuy: %{player}'
+      addon: 'Add-on: %{player}'
+    timer:
+      click_to_toggle: Clicca per attivare/disattivare il timer
+      game_time: tempo di gioco
+      level_duration: durata del livello
+      level_duration_change: modifica
+    info:
+      title: Evento
+      buyin: buy-in
+      rebuy: rebuy
+      change: modifica
+      add_rebuys:
+        title: Permetti rebuys
+      remove_rebuys:
+        title: Nessun rebuys
+      addon: add-on
+      add_addon:
+        title: Permetti add-on
+      remove_addon:
+        title: Nessun add-on
+      average: stack medio
+      total: chips in gioco
+      bank: cassa
+    levels:
+      add: aggiungi livello
+      blinds_hint: Doppio click per modificare
+      remove: rimuovi
+      apply: inizia
+      change: modifica
+      ante: ante
+    players:
+      title: Giocatori
+      bustout: eliminato
+      headers:
+        place: posizione
+        name: nome
+        rebuy: rebuys
+        addon: add-on
+        charge: soldi spesi
+        win: vincita
+      add:
+        placeholder: Aggiungi giocatore
+        hint: Scrivi il nome e premi <Invio>
+      remove:
+        button: Rimuovi giocatore
+        all: Tutti
+    payouts:
+      title: Payouts
+      remove: rimuovi
+      change: modifica
+      up_hint: Sposta in su
+      down_hint: Sposta in giù
+      add:
+        placeholder: Aggiungi payout
+        hint: Aggiungi il valore del payout e premi <Invio>. Usa il simbolo "%" per specificare una percentuale
+    footer:
+      reset:
+        name: Resetta
+        confirm: Resetta veramente
+        cancel: annulla
+        separator: ' or '
+      email_title: Invia un report di bug, una richiesta di feature, una domande, consiglio, ecc.
+    share:
+      title: Advanced Poker Clock
+      description: Poker tournament manager completamente personalizzabile, che funziona su ogni piattaforma e non richiede l'installazione di nessun plugin. Le più complete statistiche per round, blinds, chips, giocatori e premi.
+
