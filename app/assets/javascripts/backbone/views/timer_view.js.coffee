@@ -33,10 +33,18 @@ class Clock.Views.TimerView extends Backbone.View
     this.model.bind('change:levelDuration', this.render)
     this.model.bind('change:levelDuration', levelDurationView.render)
 
+    this.audio = document.createElement('audio')
+    srcMp3 = document.createElement('source')
+    srcMp3.src = '/sounds/gong.mp3'
+    srcMp3.type = 'audio/mpeg'
+    this.audio.appendChild srcMp3
+    srcOgg = document.createElement('source')
+    srcOgg.src = '/sounds/gong.ogg'
+    srcOgg.type = 'audio/ogg'
+    this.audio.appendChild srcOgg
+
   events:
     'click #round_time_left': 'toggleTimer'
-
-  alarm: new Audio('/sounds/gong.mp3')
 
   syncTimer: (game, timer) =>
     this.el.stopTime('timer')
@@ -65,7 +73,7 @@ class Clock.Views.TimerView extends Backbone.View
     info = this.model.currentLevelInfo()
     if this.currentLevel != info.levelIndex
       this.model.trigger('change:level', info)
-      this.alarm.play() if info.running && this.currentLevel?
+      this.audio.play() if info.running && this.currentLevel?
       this.currentLevel = info.levelIndex
     this.$('#round_time_left').text(this.formatTime(info.levelSecondsLeft))
     this.$('#round_time_left').toggleClass('running', info.running)
