@@ -74,7 +74,6 @@ en:
         confirm: Really reset
         cancel: cancel
         separator: ' or '
-      email_title: Send a bugreport, feature request, question, note etc.
     share:
       title: Advanced Poker Clock
       description: Fully customizable free poker tournament manager, which works on all the platforms and doesn't require any plugins or installation. Most complete statistics for rounds, blinds, chips, players and prizes.

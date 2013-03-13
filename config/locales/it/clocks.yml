@@ -74,7 +74,6 @@ it:
         confirm: Resetta veramente
         cancel: annulla
         separator: ' or '
-      email_title: Invia un report di bug, una richiesta di feature, una domande, consiglio, ecc.
     share:
       title: Advanced Poker Clock
       description: Poker tournament manager completamente personalizzabile, che funziona su ogni piattaforma e non richiede l'installazione di nessun plugin. Le più complete statistiche per round, blinds, chips, giocatori e premi.
